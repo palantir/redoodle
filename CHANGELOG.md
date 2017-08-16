@@ -1,3 +1,7 @@
+# 2.2.1
+
+- Bind Definition create() functions for use e.g. with `bindActionCreators`. ([#1](https://github.com/palantir/redoodle/pull/1) by @invliD)
+
 # 2.2.0
 
 - Open source.
