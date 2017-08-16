@@ -1,3 +1,7 @@
+# 2.2.0
+
+- Open source.
+
 # 2.1.0
 
 - Add `createStore` for completeness.
