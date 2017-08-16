@@ -233,11 +233,11 @@ export namespace TypedAction {
       this.TYPE = type as TypedActionString<T, E>;
     }
 
-    create(payload: T): {type: E, payload: T} {
+    create = (payload: T): {type: E, payload: T} => {
       return {type: this.TYPE, payload};
     }
 
-    createWithMeta<M>(payload: T, meta: M): {type: E, payload: T, meta: M} {
+    createWithMeta = <M>(payload: T, meta: M): {type: E, payload: T, meta: M} => {
       return {type: this.TYPE, payload, meta};
     }
 
@@ -255,7 +255,7 @@ export namespace TypedAction {
       this.validate = validator;
     }
 
-    create(payload: T): {type: E, payload: T} {
+    create = (payload: T): {type: E, payload: T} => {
       if (!this.validate(payload)) {
         throw new Error(`'${this.TYPE}' validation failed`);
       }
@@ -263,7 +263,7 @@ export namespace TypedAction {
       return {type: this.TYPE, payload};
     }
 
-    createWithMeta<M>(payload: T, meta: M): {type: E, payload: T, meta: M} {
+    createWithMeta = <M>(payload: T, meta: M): {type: E, payload: T, meta: M} => {
       if (!this.validate(payload)) {
         throw new Error(`'${this.TYPE}' validation failed`);
       }
@@ -287,11 +287,11 @@ export namespace TypedAction {
       return this.type as TypedActionString<never, E>;
     }
 
-    create(): {type: E, payload: never} {
+    create = (): {type: E, payload: never} => {
       return {type: this.type} as {type: E, payload: never};
     }
 
-    createWithMeta<M>(meta: M): {type: E, payload: never, meta: M} {
+    createWithMeta = <M>(meta: M): {type: E, payload: never, meta: M} => {
       return {type: this.type, meta} as {type: E, payload: never, meta: M};
     }
 
