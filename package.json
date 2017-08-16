@@ -1,6 +1,6 @@
 {
   "name": "redoodle",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "An addon library for Redux that enhances its integration with TypeScript.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -35,7 +35,10 @@
     },
     "testResultsProcessor": "<rootDir>/node_modules/ts-jest/coverageprocessor.js",
     "testRegex": "/__tests__/.*\\.spec\\.ts$",
-    "moduleFileExtensions": ["js", "ts"]
+    "moduleFileExtensions": [
+      "js",
+      "ts"
+    ]
   },
   "repository": {
     "type": "git",
