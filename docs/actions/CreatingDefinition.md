@@ -3,7 +3,7 @@
 The first step to integrating TypedActions into your Redux application is
 to create a Definition, which marries a unique Action type string
 (like `"chatroom::add_message"`) to the associated payload
-(like `{message: string, author: string}).
+(like `{message: string, author: string}`).
 
 > **Note**: The syntax for `TypedAction.define` is just a little awkward, with the double sets of `()`.
 > There is a good reason for the syntax choice, so just be careful not to forget all the pieces!

@@ -28,7 +28,7 @@ failed to play well with each other:
 2. Redux Reducers have no easy way to infer correct typings for different Action branches.
 3. The TypeScript/JavaScript STL lacks good immutable state update functions.
    While this has gotten better with Object and Array spread and their reasonable typings,
-   there is still a dirth of exact behavior for certain common Redux update workflows.
+   there is still a dearth of exact behavior for certain common Redux update workflows.
 
 Redoodle attempts to solve these integration pains,
 and takes a stab at a few more common points of developer frustration when working
