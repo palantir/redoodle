@@ -1,0 +1,24 @@
+{
+  "gitbook": "3.2.2",
+  "title": "Redoodle",
+  "plugins": ["edit-link", "prism", "-highlight", "github"],
+  "pluginsConfig": {
+    "edit-link": {
+      "base": "https://github.com/palantir/redoodle/tree/master",
+      "label": "Edit This Page"
+    },
+    "github": {
+      "url": "https://github.com/palantir/redoodle/"
+    },
+    "prism": {
+      "lang": {
+        "ts": "typescript"
+      }
+    },
+    "theme-default": {
+      "styles": {
+        "website": "build/gitbook.css"
+      }
+    }
+  }
+}

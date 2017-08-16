@@ -1,0 +1,54 @@
+{
+  "name": "redoodle",
+  "version": "2.1.0",
+  "description": "An addon library for Redux that enhances its integration with TypeScript.",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "scripts": {
+    "lint": "find src -type f | xargs tslint -c tslint.json",
+    "prepare": "npm run clean && npm run build",
+    "test": "jest && npm run lint",
+    "build": "npm run clean && tsc",
+    "clean": "rm -rf lib/",
+    "docs:clean": "rm -rf _book/",
+    "docs:prepare": "gitbook install",
+    "docs:build": "npm run docs:prepare && gitbook build -g palantir/redoodle",
+    "docs:watch": "npm run docs:prepare && gitbook serve -g palantir/redoodle"
+  },
+  "dependencies": {
+    "tslib": "^1.6.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^19.2.2",
+    "gitbook-cli": "^2.3.0",
+    "jest": "^19.0.2",
+    "redux": "^3.7.2",
+    "ts-jest": "^19.0.13",
+    "tslint": "^5.1.0",
+    "tslint-eslint-rules": "^4.0.0",
+    "typescript": "^2.4.2"
+  },
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testResultsProcessor": "<rootDir>/node_modules/ts-jest/coverageprocessor.js",
+    "testRegex": "/__tests__/.*\\.spec\\.ts$",
+    "moduleFileExtensions": ["js", "ts"]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/palantir/redoodle.git"
+  },
+  "license": "Apache-2.0",
+  "keywords": [
+    "redux",
+    "typescript",
+    "typed",
+    "redoodle",
+    "action",
+    "reducer",
+    "compound",
+    "logging"
+  ]
+}

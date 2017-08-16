@@ -1,0 +1,15 @@
+/.idea/
+/.vscode/
+/_book/
+/node_modules/
+/lib/__tests__/
+/src/
+.editorconfig
+.gitignore
+.npmignore
+.npmrc
+book.json
+circle.yml
+tsconfig.json
+tslint.json
+yarn.lock
