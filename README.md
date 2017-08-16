@@ -11,7 +11,7 @@ and play well with each other:
 - Some [opinions on state management](#on-initial-state-management)
 
 [![Circle CI](https://img.shields.io/circleci/project/github/palantir/redoodle/master.svg?style=flat-square)](https://circleci.com/gh/palantir/redoodle)
-[![npm](https://img.shields.io/npm/v/redux.svg?style=flat-square)](https://www.npmjs.com/package/redoodle)
+[![npm](https://img.shields.io/npm/v/redoodle.svg?style=flat-square)](https://www.npmjs.com/package/redoodle)
 
 
 ## Motivation
