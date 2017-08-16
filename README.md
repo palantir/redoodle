@@ -94,7 +94,7 @@ const banquetHallReducer = TypedReducer.builder<BanquetHall>()
 
 For more on Typed Actions, probably the most simple and significant utility
 Redoodle offers, check out the Redoodle
-[docs](docs/actions/).
+[docs](https://palantir.github.io/redoodle/docs/actions/).
 
 
 ### Compound Actions
@@ -122,7 +122,7 @@ To use CompoundActions, your store must be configured to correctly unwrap and re
 comes with a `compoundActionsEnhancer()` (or the simpler `reduceCompoundActions` decorator) for exactly that.
 
 For more on CompoundActions, check out the Redoodle
-[docs](docs/compound/).
+[docs](https://palantir.github.io/redoodle/docs/compound/).
 
 
 ### Utilities
@@ -131,30 +131,30 @@ Redoodle packages a number of utility functions,
 some explicitly for clean TypeScript immutable state manipulation,
 some for completeness in developer experience.
 
-- [combineReducers(reducers)](docs/utilities/combineReducers.html)
-- [composeReducers(...reducers)](docs/utilities/composeReducers.html)
-- [compoundActionsEnhancer()](docs/utilities/compoundActionsEnhancer.html)
-- [createStore()](docs/utilities/createStore.html)
-- [loggingMiddleware([options])](docs/utilities/loggingMiddleware.html)
-- [omit(state, keys)](docs/utilities/omit.html)
-- [reduceCompoundActions(reducer)](docs/utilities/reduceCompoundActions.html)
-- [setWith(state, ...overrides)](docs/utilities/setWith.html)
+- [combineReducers(reducers)](https://palantir.github.io/redoodle/docs/utilities/combineReducers.html)
+- [composeReducers(...reducers)](https://palantir.github.io/redoodle/docs/utilities/composeReducers.html)
+- [compoundActionsEnhancer()](https://palantir.github.io/redoodle/docs/utilities/compoundActionsEnhancer.html)
+- [createStore()](https://palantir.github.io/redoodle/docs/utilities/createStore.html)
+- [loggingMiddleware([options])](https://palantir.github.io/redoodle/docs/utilities/loggingMiddleware.html)
+- [omit(state, keys)](https://palantir.github.io/redoodle/docs/utilities/omit.html)
+- [reduceCompoundActions(reducer)](https://palantir.github.io/redoodle/docs/utilities/reduceCompoundActions.html)
+- [setWith(state, ...overrides)](https://palantir.github.io/redoodle/docs/utilities/setWith.html)
 
 ### On Initial State Management
 
 Redoodle firmly believes that specific benefits the TypeScript compiler provides
 should change the way we think about Redux State initialization.
 This shifts the behavior of some Redoodle utilities slightly to be more ergonomic for developers,
-and is discussed in greater detail [here](docs/InitialState.html).
+and is discussed in greater detail [here](https://palantir.github.io/redoodle/docs/InitialState.html).
 
 ## Documentation
 
-* [Introduction](docs/README.md)
-* [Typed Actions](docs/actions/README.md)
-* [Compound Actions](docs/compound/README.md)
-* [Initial State Management](docs/InitialState.md)
-* [Utilities](docs/utilities/README.md)
-* [FAQ](docs/FAQ.md)
+* [Introduction](https://palantir.github.io/redoodle/)
+* [Typed Actions](https://palantir.github.io/redoodle/docs/actions/)
+* [Compound Actions](https://palantir.github.io/redoodle/docs/compound/)
+* [Initial State Management](https://palantir.github.io/redoodle/docs/InitialState.html)
+* [Utilities](https://palantir.github.io/redoodle/docs/utilities/)
+* [FAQ](https://palantir.github.io/redoodle/docs/FAQ.html)
 
 
 ## Getting Involved
