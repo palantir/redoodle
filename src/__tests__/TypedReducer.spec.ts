@@ -77,10 +77,10 @@ describe("TypedReducer", () => {
       .withActionHandler(Reset.TYPE, (_state, action) => ({total: action.payload}))
       .build();
 
-    let state: CountState = {total: 5};
-    state = reducer(state, Reset.create(10));
-    state = reducer(state, Count.create(4));
-    expect(state).toEqual({total: 14});
+    let countState: CountState = {total: 5};
+    countState = reducer(countState, Reset.create(10));
+    countState = reducer(countState, Count.create(4));
+    expect(countState).toEqual({total: 14});
   });
 
   it("should preserve typings (complex code compiles)", () => {
