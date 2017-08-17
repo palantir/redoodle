@@ -1,6 +1,6 @@
 {
   "name": "redoodle",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "An addon library for Redux that enhances its integration with TypeScript.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
