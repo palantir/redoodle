@@ -86,7 +86,7 @@ const banquetHallReducer = TypedReducer.builder<BanquetHall>()
     return setWith(state, {
       [tableId]: setWith(state[tableId], {
         isFlipped: !state[tableId].isFlipped
-      });
+      })
     });
   })
   .build();
