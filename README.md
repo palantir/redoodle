@@ -46,7 +46,7 @@ With Redoodle, you can create an Action Definition, and then use that Definition
 in all places you were previously guessing, casting, or crying.
 
 ```ts
-import { TypedAction, TypeReducer, setWith } from "redoodle";
+import { TypedAction, TypedReducer, setWith } from "redoodle";
 
 // FlipTable is an action Definition for actions of type "app::flip_table",
 // and associates the given payload type with the action.
