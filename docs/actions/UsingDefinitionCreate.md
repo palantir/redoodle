@@ -3,9 +3,9 @@
 The most important thing a Definition does is to be a factory to stamp
 instances of Actions that conform to the Definition.
 
-A Definition has a method `create()` which, given a payload,
+A Definition is a callable function which, given a payload,
 will create an Action object ready to dispatch.
-The `create()` method is typesafe, which means that a payload
+The Definition itself is typesafe, which means that a payload
 that has incorrect, has extra, or is missing keys will raise compile-time errors.
 
 The created Action is a plain old Redux Action that's ready to go straight
@@ -27,7 +27,7 @@ const AddMessage = TypedAction.define("chatroom::add_message")<{
   author: string;
 }>();
 
-const action = AddMessage.create({
+const action = AddMessage({
   message: "Hello Redoodle",
   author: "crazytoucan"
 });
@@ -54,7 +54,12 @@ const action = AddMessage.create({
 ```ts
 namespace TypedAction {
   interface Definition<E extends string, T> {
+    (payload: T): {type: E; payload: T;};
+
+    // other members not explored in this segment
     create(payload: T): {type: E; payload: T;};
+    is(action: Action): action is TypedAction<T, E>;
+    TYPE: TypedActionString<T, E>;
   }
 }
 ```
