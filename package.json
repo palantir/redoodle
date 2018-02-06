@@ -6,15 +6,15 @@
   "typings": "lib/index.d.ts",
   "scripts": {
     "lint": "find src -type f | xargs tslint -c tslint.json",
-    "prepare": "npm run clean && npm run build",
-    "test": "jest && npm run lint",
-    "build": "npm run clean && tsc",
+    "prepare": "yarn run clean && yarn run build",
+    "test": "jest && yarn run lint",
+    "build": "yarn run clean && tsc",
     "clean": "rm -rf lib/",
     "docs:clean": "rm -rf _book/",
     "docs:prepare": "gitbook install",
-    "docs:build": "npm run docs:prepare && gitbook build -g palantir/redoodle",
-    "docs:watch": "npm run docs:prepare && gitbook serve -g palantir/redoodle",
-    "docs:publish": "npm run docs:clean && npm run docs:build && cd _book && git init && git commit --allow-empty -m 'update book' && git checkout -b gh-pages && touch .nojekyll && git add . && git commit -am 'update book' && git push git@github.com:palantir/redoodle gh-pages --force"
+    "docs:build": "yarn run docs:prepare && gitbook build -g palantir/redoodle",
+    "docs:watch": "yarn run docs:prepare && gitbook serve -g palantir/redoodle",
+    "docs:publish": "yarn run docs:clean && yarn run docs:build && cd _book && git init && git commit --allow-empty -m 'update book' && git checkout -b gh-pages && touch .nojekyll && git add . && git commit -am 'update book' && git push git@github.com:palantir/redoodle gh-pages --force"
   },
   "dependencies": {
     "tslib": "^1.6.1"
