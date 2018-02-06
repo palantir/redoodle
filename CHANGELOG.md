@@ -1,4 +1,4 @@
-# 2.3.0
+# 2.3.1
 
 - Allow TypedAction.Definitions and family to be called as functions
   as sugar for TypedAction.Definition.create(). ([#7](https://github.com/palantir/redoodle/pull/7))
