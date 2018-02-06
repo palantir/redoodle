@@ -41,6 +41,11 @@ if (AddMessage.is(action)) {
 namespace TypedAction {
   interface Definition<E extends string, T> {
     is(action: Action): action is TypedAction<T, E>;
+
+    // other members not explored in this segment
+    (payload: T): {type: E; payload: T;};
+    create(payload: T): {type: E; payload: T;};
+    TYPE: TypedActionString<T, E>;
   }
 }
 ```

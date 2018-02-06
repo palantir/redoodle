@@ -33,6 +33,7 @@ export namespace TypedAction {
       <T>() => Definition<E, T>;
 
   interface Definition<E extends string, T> {
+    (payload: T): {type: E; payload: T;};
     create(payload: T): {type: E; payload: T;};
     is(action: Action): action is TypedAction<T, E>;
     TYPE: TypedActionString<T, E>;

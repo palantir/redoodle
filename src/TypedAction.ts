@@ -120,9 +120,9 @@ export namespace TypedAction {
   export function define<E extends string>(type: E): <T>(options?: DefineOptions<T>) => Definition<E, T> {
     return <T>(options?: DefineOptions<T>) => {
       if (process.env.NODE_ENV !== "production" && options !== undefined && options.validate !== undefined) {
-        return new RedoodleDefinitionWithValidator(type, options.validate);
+        return createDefinitionWithValidator<E, T>(type, options.validate);
       } else {
-        return new RedoodleDefinition<E, T>(type);
+        return createDefinition<E, T>(type);
       }
     };
   }
@@ -146,7 +146,7 @@ export namespace TypedAction {
    */
   export function defineWithoutPayload<E extends string>(type: E): () => NoPayloadDefinition<E> {
     return () => {
-      return new RedoodleNoPayloadDefinition<E>(type);
+      return createNoPayloadDefinition<E>(type);
     };
   }
 
@@ -160,6 +160,12 @@ export namespace TypedAction {
    * All Definitions for a Redux-enabled application MUST have unique strings.
    */
   export interface Definition<E extends string, T> {
+    /**
+     * Creates an Action of this type with the given payload.
+     * Functionally equivalent to the explicit Definition.create().
+     */
+    (payload: T): {type: E, payload: T};
+
     /**
      * The Type of a TypedAction refers to the physical `{type}` string
      * given to matching Actions. This TypedActionString is branded
@@ -200,6 +206,12 @@ export namespace TypedAction {
    */
   export interface NoPayloadDefinition<E extends string> {
     /**
+     * Creates an Action of this type (and no payload).
+     * Functionally equivalent to the explicit NoPayloadDefinition.create().
+     */
+    (): {type: E, payload: never};
+
+    /**
      * The Type of a TypedAction refers to the physical `{type}` string
      * given to matching Actions. This TypedActionString is branded
      * with the payload type as well for e.g. TypedReducer type inferencing.
@@ -226,77 +238,80 @@ export namespace TypedAction {
     is(action: Action): action is TypedAction<never, E>;
   }
 
-  class RedoodleDefinition<E extends string, T> implements Definition<E, T> {
-    TYPE: TypedActionString<T, E>;
+  function createDefinition<E extends string, T>(type: E): Definition<E, T> {
+    const create = (payload: T): {type: E, payload: T} => {
+      return {type, payload};
+    };
 
-    constructor(type: E) {
-      this.TYPE = type as TypedActionString<T, E>;
-    }
+    const createWithMeta = <M>(payload: T, meta: M): {type: E, payload: T, meta: M} => {
+      return {type, payload, meta};
+    };
 
-    create = (payload: T): {type: E, payload: T} => {
-      return {type: this.TYPE, payload};
-    }
+    const is = (action: Action): action is TypedAction<T, E> => {
+      return action.type === type;
+    };
 
-    createWithMeta = <M>(payload: T, meta: M): {type: E, payload: T, meta: M} => {
-      return {type: this.TYPE, payload, meta};
-    }
+    const def = create as Definition<E, T>;
+    def.create = create;
+    def.createWithMeta = createWithMeta;
+    def.is = is;
+    def.TYPE = type as TypedActionString<T, E>;
 
-    is(action: Action): action is TypedAction<T, E> {
-      return action.type === this.TYPE;
-    }
+    return def;
   }
 
-  class RedoodleDefinitionWithValidator<E extends string, T> implements Definition<E, T> {
-    TYPE: TypedActionString<T, E>;
-    private validate: (payload: T) => boolean;
-
-    constructor(type: E, validator: (payload: T) => boolean) {
-      this.TYPE = type as TypedActionString<T, E>;
-      this.validate = validator;
-    }
-
-    create = (payload: T): {type: E, payload: T} => {
-      if (!this.validate(payload)) {
-        throw new Error(`'${this.TYPE}' validation failed`);
+  function createDefinitionWithValidator<E extends string, T>(
+    type: E,
+    validate: (payload: T) => boolean,
+  ): Definition<E, T> {
+    const create = (payload: T): {type: E, payload: T} => {
+      if (!validate(payload)) {
+        throw new Error(`'${type}' validation failed`);
       }
 
-      return {type: this.TYPE, payload};
-    }
+      return {type, payload};
+    };
 
-    createWithMeta = <M>(payload: T, meta: M): {type: E, payload: T, meta: M} => {
-      if (!this.validate(payload)) {
-        throw new Error(`'${this.TYPE}' validation failed`);
+    const createWithMeta = <M>(payload: T, meta: M): {type: E, payload: T, meta: M} => {
+      if (!validate(payload)) {
+        throw new Error(`'${type}' validation failed`);
       }
 
-      return {type: this.TYPE, payload, meta};
-    }
+      return {type, payload, meta};
+    };
 
-    is(action: Action): action is TypedAction<T, E> {
-      return action.type === this.TYPE;
-    }
+    const is = (action: Action): action is TypedAction<T, E> => {
+      return action.type === type;
+    };
+
+    const def = create as Definition<E, T>;
+    def.create = create;
+    def.createWithMeta = createWithMeta;
+    def.is = is;
+    def.TYPE = type as TypedActionString<T, E>;
+
+    return def;
   }
 
-  class RedoodleNoPayloadDefinition<E extends string> implements NoPayloadDefinition<E> {
-    private type: E;
+  function createNoPayloadDefinition<E extends string>(type: E): NoPayloadDefinition<E> {
+    const create = (): {type: E, payload: never} => {
+      return {type} as {type: E, payload: never};
+    };
 
-    constructor(type: E) {
-      this.type = type;
-    }
+    const createWithMeta = <M>(meta: M): {type: E, payload: never, meta: M} => {
+      return {type, meta} as {type: E, payload: never, meta: M};
+    };
 
-    get TYPE() {
-      return this.type as TypedActionString<never, E>;
-    }
+    const is = (action: Action): action is TypedAction<never, E> => {
+      return action.type === type;
+    };
 
-    create = (): {type: E, payload: never} => {
-      return {type: this.type} as {type: E, payload: never};
-    }
+    const def = create as NoPayloadDefinition<E>;
+    def.create = create;
+    def.createWithMeta = createWithMeta;
+    def.is = is;
+    def.TYPE = type as TypedActionString<never, E>;
 
-    createWithMeta = <M>(meta: M): {type: E, payload: never, meta: M} => {
-      return {type: this.type, meta} as {type: E, payload: never, meta: M};
-    }
-
-    is(action: Action): action is TypedAction<never, E> {
-      return action.type === this.type;
-    }
+    return def;
   }
 }

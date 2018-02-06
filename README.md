@@ -62,7 +62,7 @@ const FlipTable = TypedAction.define("app::flip_table")<{
 //      payload: { tableId: "2567f216-59b7-4bfe-b46f-909c6711fea4", face: "happy" }
 //    }
 //
-const action = FlipTable.create({
+const action = FlipTable({
   tableId: "2567f216-59b7-4bfe-b46f-909c6711fea4",
   face: "happy"
 });
@@ -115,7 +115,7 @@ import { CompoundAction } from "redoodle";
 const doFoo: Action = {...};
 const doBar: Action = {...};
 
-store.dispatch(CompoundAction.create([doFoo, doBar]));
+store.dispatch(CompoundAction([doFoo, doBar]));
 ```
 
 To use CompoundActions, your store must be configured to correctly unwrap and reduce them; thankfully Redoodle

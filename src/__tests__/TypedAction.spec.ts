@@ -24,6 +24,30 @@ describe("TypedAction", () => {
       SetMessage = TypedAction.define("test::set_message")<string>();
     });
 
+    describe("when called as function, the returned action", () => {
+      let action: TypedAction<string>;
+      beforeAll(() => {
+        action = SetMessage("Hello World");
+      });
+
+      it("should have defined type", () => {
+        expect(action).toBeDefined();
+        expect(action.type).toEqual(SetMessage.TYPE);
+      });
+
+      it("should have given payload", () => {
+        expect(action.payload).toEqual("Hello World");
+      });
+
+      it("should return actions with correct typing information", () => {
+        expect(typeof action.payload.charAt).toBe("function");
+      });
+
+      it("should return actions without a 'meta' key", () => {
+        expect(action).not.toHaveProperty("meta");
+      });
+    });
+
     describe("#TYPE", () => {
       it("should match", () => {
         expect(SetMessage.TYPE).toBe("test::set_message");
@@ -112,6 +136,30 @@ describe("TypedAction", () => {
       });
     });
 
+    describe("when called as function (validation pass), the returned action", () => {
+      let action: TypedAction<string>;
+      beforeAll(() => {
+        action = SetMessage("Hello World");
+      });
+
+      it("should have defined type", () => {
+        expect(action).toBeDefined();
+        expect(action.type).toEqual(SetMessage.TYPE);
+      });
+
+      it("should have given payload", () => {
+        expect(action.payload).toEqual("Hello World");
+      });
+
+      it("should return actions with correct typing information", () => {
+        expect(typeof action.payload.charAt).toBe("function");
+      });
+
+      it("should return actions without a 'meta' key when no meta is provided", () => {
+        expect(action).not.toHaveProperty("meta");
+      });
+    });
+
     describe("#TYPE", () => {
       it("should match", () => {
         expect(SetMessage.TYPE).toBe("test::set_message");
@@ -139,6 +187,14 @@ describe("TypedAction", () => {
 
       it("should return actions without a 'meta' key when no meta is provided", () => {
         expect(action).not.toHaveProperty("meta");
+      });
+    });
+
+    describe("when called as function (validation fail)", () => {
+      it("should throw", () => {
+        expect(() => {
+          SetMessage("blacklist");
+        }).toThrow();
       });
     });
 
