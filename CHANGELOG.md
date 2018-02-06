@@ -1,3 +1,9 @@
+# 2.3.0
+
+- Allow TypedAction.Definitions and family to be called as functions
+  as sugar for TypedAction.Definition.create(). ([#7](https://github.com/palantir/redoodle/pull/7))
+- Add TypedAction.PayloadOf<> helper. ([#8](https://github.com/palantir/redoodle/pull/8))
+
 # 2.2.1
 
 - Bind Definition create() functions for use e.g. with `bindActionCreators`. ([#1](https://github.com/palantir/redoodle/pull/1) by @invliD)
