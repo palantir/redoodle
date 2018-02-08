@@ -1,3 +1,6 @@
+# 2.3.2
+- Use `Pick<S, K> | S` instead of `Pick<S, K> | Partial<S>` for `setWith()` typing.
+
 # 2.3.1
 
 - Allow TypedAction.Definitions and family to be called as functions
