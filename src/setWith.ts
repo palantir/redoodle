@@ -44,8 +44,8 @@ import { shallowEqualsPartial } from "./internal/utils/shallowEqualsPartial";
  */
 export function setWith<S, K extends keyof S>(
   state: S,
-  override: (Partial<S> & Pick<S, K>),
-  ...addlOverrides: (Partial<S> & Pick<S, K>)[],
+  override: (Pick<S, K> | S),
+  ...addlOverrides: (Pick<S, K> | S)[],
 ): S;
 
 /**
