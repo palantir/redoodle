@@ -20,8 +20,8 @@ import { Action } from "./Action";
 /**
  * Standard Redux action dispatch function.
  *
- * Remark: Unlike Redux, we are not opinionated on the kind of underlying
- * store that this Dispatch function is connected to.
+ * Remark: Unlike Redux, we are not opinionated on the kind of actions
+ * that this Dispatch function may dispatch.
  */
 export interface Dispatch {
   <A extends Action>(action: A): A;
