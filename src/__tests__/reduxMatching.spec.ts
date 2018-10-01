@@ -38,7 +38,7 @@ describe("Redux shape matching", () => {
   describe("Dispatch", () => {
     it("should be assignable to Redux.Dispatch", () => {
       const dispatch: Dispatch = undefined!;
-      const reduxDispatch: Redux.Dispatch<any> = dispatch;
+      const reduxDispatch: Redux.Dispatch = dispatch;
 
       // reference variables so compiler isn't angry
       [dispatch, reduxDispatch];
