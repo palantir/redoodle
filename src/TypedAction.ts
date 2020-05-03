@@ -175,6 +175,17 @@ export namespace TypedAction {
     TYPE: TypedActionString<T, E>;
 
     /**
+     * Hidden field used for some workflows that need to extract the payload type back out of
+     * a TypedAction definition. For example, `const payload: typeof MyAction.__PAYLOAD = { ... };`
+     * can be used to define a payload conforming to MyAction.
+     *
+     * This value should only be used for constructing Types in TypeScript. It never holds a real value.
+     * Future versions of Redoodle may throw when attempting accessing this value at runtime
+     * to catch accidental misuse.
+     */
+    __PAYLOAD: T;
+
+    /**
      * Creates an Action of this type with the given payload.
      */
     create(payload: T): {type: E, payload: T};
