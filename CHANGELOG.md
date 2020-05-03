@@ -1,3 +1,8 @@
+# 2.4.0
+
+- Add `"sideEffects": false` to package.json ([#25](https://github.com/palantir/redoodle/pull/25))
+- Add `TypedAction.__PAYLOAD` type helper ([#26](https://github.com/palantir/redoodle/pull/26))
+
 # 2.3.2
 
 - Use `Pick<S, K> | S` instead of `Pick<S, K> & Partial<S>` for `setWith()` typing.
