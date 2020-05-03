@@ -4,6 +4,7 @@
   "description": "An addon library for Redux that enhances its integration with TypeScript.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
+  "sideEffects": false,
   "scripts": {
     "lint": "find src -type f | xargs tslint -c tslint.json",
     "prepare": "yarn run clean && yarn run build",
