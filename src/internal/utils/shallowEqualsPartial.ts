@@ -15,11 +15,16 @@
  * limitations under the License.
  */
 
+const hasOwnProperty = Object.prototype.hasOwnProperty;
 export function shallowEqualsPartial(state: any, partial: any): boolean {
   const partialKeys = Object.keys(partial);
   for (let i = 0; i < partialKeys.length; i++) {
     const key = partialKeys[i];
-    if (partial[key] !== state[key]) {
+    const partialValue = partial[key];
+    if (
+      state[key] !== partialValue ||
+      (partialValue === undefined && !hasOwnProperty.call(state, key))
+    ) {
       return false;
     }
   }
