@@ -80,7 +80,12 @@ export interface TypedAction<T, E extends string = string> {
 export namespace TypedAction {
 
   /**
+   * **DEPRECATED**: As of Redoodle 2.5.0, consumers should prefer `defineAction()`
+   * over than `TypedAction.define()`. See https://github.com/palantir/redoodle/issues/35
+   *
    * Options to TypedAction.define().
+   *
+   * @deprecated
    */
   export interface DefineOptions<T> {
     /**
@@ -94,6 +99,9 @@ export namespace TypedAction {
   }
 
   /**
+   * **DEPRECATED**: As of Redoodle 2.5.0, consumers should prefer `defineAction()`
+   * over than `TypedAction.define()`. See https://github.com/palantir/redoodle/issues/35
+   *
    * One of the core functions of Redoodle, `TypedAction.define` creates a Definition
    * to manage all Redux actions of a specific type string, such as `"myapp::set_foo_value"`.
    *
@@ -117,6 +125,8 @@ export namespace TypedAction {
    * All Definitions for a Redux-enabled application MUST have unique strings.
    *
    * @param options.validatePayload
+   *
+   * @deprecated
    */
   export function define<E extends string>(type: E): <T>(options?: DefineOptions<T>) => Definition<E, T> {
     return <T>(options?: DefineOptions<T>) => {
@@ -129,6 +139,9 @@ export namespace TypedAction {
   }
 
   /**
+   * **DEPRECATED**: As of Redoodle 2.5.0, consumers should prefer `defineAction()`
+   * over than `TypedAction.define()`. See https://github.com/palantir/redoodle/issues/35
+   *
    * Similar to TypedAction.define, creates a NoPayloadDefinition for the given Action type
    * string, like `"example::clear_foo"`. In practice, actions without payloads are
    * usually of the "clear" or "invalidate" variety.
@@ -144,6 +157,8 @@ export namespace TypedAction {
    *
    *
    * All Definitions for a Redux-enabled application MUST have unique strings.
+   *
+   * @deprecated
    */
   export function defineWithoutPayload<E extends string>(type: E): () => NoPayloadDefinition<E> {
     return () => {
