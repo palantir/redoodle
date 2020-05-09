@@ -41,7 +41,7 @@ function anyDefined(state: any, keys: string[]): boolean {
  *      a prototype if the input `state` has no prototype.
  */
 export function omit<S extends {[key: string]: any}>(state: S, keys: (keyof S)[]): S {
-  if (!anyDefined(state, keys)) {
+  if (!anyDefined(state, keys as string[])) {
     return state;
   }
 

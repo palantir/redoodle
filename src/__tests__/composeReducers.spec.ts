@@ -15,18 +15,18 @@
  * limitations under the License.
  */
 
-import { Action, TypedAction, composeReducers } from "../index";
+import { Action, composeReducers } from "../index";
 
-function add(state: number, action: TypedAction<number>) {
+function add(state: number, action: Action) {
   return state + action.payload;
 }
 
-function multiply(state: number, action: TypedAction<number>) {
+function multiply(state: number, action: Action) {
   return state * action.payload;
 }
 
 function constant(payload: number): Action {
-  return {type: "test::constant", payload};
+  return { type: "test::constant", payload };
 }
 
 describe("composeReducers", () => {
