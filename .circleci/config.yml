@@ -43,8 +43,8 @@ workflows:
     jobs:
       - build
       - test:
-        requires:
-          - build
+          requires:
+            - build
       - lint:
-        requires:
-          - build
+          requires:
+            - build
