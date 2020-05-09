@@ -29,6 +29,7 @@ jobs:
     docker:
       - image: circleci/node:10.16.3
     steps:
+      - checkout
       - attach_workspace:
           at: ./
       - run:
@@ -39,6 +40,7 @@ jobs:
     docker:
       - image: circleci/node:10.16.3
     steps:
+      - checkout
       - attach_workspace:
           at: ./
       - run:
