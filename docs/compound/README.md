@@ -7,24 +7,24 @@ and the entire reduction is applied atomically in the Redux store.
 An example compound action might look like the following:
 
 ```js
-{ type: "redoodle::compound",
+{
+  type: "redoodle::compound",
   payload: [
-    { type: "musicplayer::create_playlist",
+    {
+      type: "CreatePlaylist",
       payload: { playlistId: "100", name: "Focus Music" }
     },
-    { type: "musicplayer::add_song_to_playlist",
+    {
+      type: "AddSongToPlaylist",
       payload: { songId: "7878", playlistId: "100" }
     },
-    { type: "musicplayer::flash_playlist",
+    {
+      type: "FlashPlaylist",
       payload: { playlistId: "100", color: "green" }
     }
   ]
 }
 ```
-
-The CompoundAction type is a plain ol' `TypedAction.Definition`,
-so CompoundActions can be created with the standard Definition method
-`CompoundAction.create(Action[])`.
 
 Don't forget to [Configure your Store](ConfiguringStore.md) for usage with CompoundActions!
 
@@ -44,10 +44,10 @@ class MusicPlayerActionCreator {
   addSongToNewPlaylist(songId: string, playlistName: string) {
     let playlistId = uniqueId();
 
-    this.dispatch(CompoundAction.create([
-      CreatePlaylist.create({playlistId, name: playlistName}),
-      AddSongToPlaylist.create({songId, playlistId}),
-      FlashPlaylist.create({playlistId, color: "green"}),
+    this.dispatch(CompoundAction([
+      CreatePlaylist({ playlistId, name: playlistName }),
+      AddSongToPlaylist({ songId, playlistId }),
+      FlashPlaylist({ playlistId, color: "green" }),
     ]));
   }
 }
@@ -57,13 +57,4 @@ class MusicPlayerActionCreator {
 
 ```ts
 const CompoundAction: TypedAction.Definition<"redoodle::compound", Action[]>;
-```
-
-```ts
-// Rewritten as an equivalent namespace for readability:
-namespace CompoundAction {
-  function create(payload: Action[]): {type: "redoodle::compound"; payload: Action[];};
-  function is(action: Action): action is TypedAction<Action[], "redoodle::compound">;
-  const TYPE: TypedActionString<Action[], "redoodle::compound">;
-}
 ```

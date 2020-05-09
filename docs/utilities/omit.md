@@ -11,7 +11,7 @@ the same state reference itself is returned by `omit()` to support reference equ
 #### Example
 
 ```ts
-import {omit, setWith} from "redoodle";
+import { omit, setWith } from "redoodle";
 
 reducer.withHandler(RemoveThing.TYPE, (state, payload) => {
   return setWith(state, {

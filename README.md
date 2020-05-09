@@ -46,20 +46,24 @@ With Redoodle, you can create an Action Definition, and then use that Definition
 in all places you were previously guessing, casting, or crying.
 
 ```ts
-import { TypedAction, TypedReducer, setWith } from "redoodle";
+import { defineAction, TypedReducer, setWith } from "redoodle";
 
-// FlipTable is an action Definition for actions of type "app::flip_table",
+// FlipTable is an action Definition for actions of type "FlipTable",
 // and associates the given payload type with the action.
-const FlipTable = TypedAction.define("app::flip_table")<{
+const FlipTable = defineAction("FlipTable")<{
   tableId: string;
   face: "happy" | "angry";
 }>();
 
 // We can use a Definition to create a matching Action. This is all type-safe.
-// At runtime, this `action` has the value
+// At runtime, the `action` below has the value
 //
-//    { type: "app::flip_table",
-//      payload: { tableId: "2567f216-59b7-4bfe-b46f-909c6711fea4", face: "happy" }
+//    {
+//      type: "FlipTable",
+//      payload: {
+//        tableId: "2567f216-59b7-4bfe-b46f-909c6711fea4",
+//        face: "happy"
+//      }
 //    }
 //
 const action = FlipTable({
@@ -77,9 +81,9 @@ interface BanquetHall {
 
 // banquetHallReducer is a standard Redux Reducer<BanquetHall>. Nothing fancy.
 const banquetHallReducer = TypedReducer.builder<BanquetHall>()
-  // FlipTable.TYPE is the plain string "app::flip_table", but it's branded with
-  // rich compile-time information about its associated payload type {tableId, face}.
-  .withHandler(FlipTable.TYPE, (state, {tableId, face}) => {
+  // FlipTable.TYPE is the plain string "FlipTable", but it's branded with
+  // rich compile-time information about its associated payload type `{tableId, face}`.
+  .withHandler(FlipTable.TYPE, (state, { tableId, face }) => {
     // All of the operations here are 100% type-safe. If I misspelled `isFlipped` below
     // in either place, or fail to copy the correct subset of state when applying my
     // immutable copies, the compiler will save me!
@@ -150,16 +154,11 @@ and is discussed in greater detail [here](https://palantir.github.io/redoodle/do
 ## Documentation
 
 * [Introduction](https://palantir.github.io/redoodle/)
-* [Typed Actions](https://palantir.github.io/redoodle/docs/actions/)
+* [defineAction](https://palantir.github.io/redoodle/docs/actions/)
 * [Compound Actions](https://palantir.github.io/redoodle/docs/compound/)
 * [Initial State Management](https://palantir.github.io/redoodle/docs/InitialState.html)
 * [Utilities](https://palantir.github.io/redoodle/docs/utilities/)
 * [FAQ](https://palantir.github.io/redoodle/docs/FAQ.html)
-
-
-## Getting Involved
-
-Coming Soon!
 
 ## License
 
