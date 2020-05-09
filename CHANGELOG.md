@@ -1,31 +1,31 @@
-# 2.4.0
+## 2.4.0
 
 - Add `"sideEffects": false` to package.json ([#25](https://github.com/palantir/redoodle/pull/25))
 - Add `TypedAction.__PAYLOAD` type helper ([#26](https://github.com/palantir/redoodle/pull/26))
 
-# 2.3.2
+## 2.3.2
 
 - Use `Pick<S, K> | S` instead of `Pick<S, K> & Partial<S>` for `setWith()` typing.
 
-# 2.3.1
+## 2.3.1
 
 - Allow TypedAction.Definitions and family to be called as functions
   as sugar for TypedAction.Definition.create(). ([#7](https://github.com/palantir/redoodle/pull/7))
 - Add TypedAction.PayloadOf<> helper. ([#8](https://github.com/palantir/redoodle/pull/8))
 
-# 2.2.1
+## 2.2.1
 
 - Bind Definition create() functions for use e.g. with `bindActionCreators`. ([#1](https://github.com/palantir/redoodle/pull/1) by @invliD)
 
-# 2.2.0
+## 2.2.0
 
 - Open source.
 
-# 2.1.0
+## 2.1.0
 
 - Add `createStore` for completeness.
 
-# 2.0.0
+## 2.0.0
 
 - **[Breaking]** TypedActionDef.create() has moved to TypedAction.define().
   - TypedAction.define() has a slightly more awkward syntax than the old
@@ -50,12 +50,12 @@
     and to better decouple file system structure from action namespaces.
     The `::` sequence is reminiscent of C++ namespaces.
 
-# 1.1.0
+## 1.1.0
 
 - Add `omit`.
 - Add `setWith`.
 
-# 1.0.0
+## 1.0.0
 
 - **[Breaking]** Remove ScopedAction. We've seen some usage, but it still doesn't seem crisp.
 - **[Breaking]** Harden initialState handling.

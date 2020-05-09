@@ -48,7 +48,7 @@ in all places you were previously guessing, casting, or crying.
 ```ts
 import { defineAction, TypedReducer, setWith } from "redoodle";
 
-// FlipTable is an action Definition for actions of type "app::flip_table",
+// FlipTable is an action Definition for actions of type "FlipTable",
 // and associates the given payload type with the action.
 const FlipTable = defineAction("FlipTable")<{
   tableId: string;

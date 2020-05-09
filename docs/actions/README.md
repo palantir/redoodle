@@ -17,10 +17,10 @@ For example, the following raw data is a Redux action:
 
 All actions of a given type have well-defined matching payload shapes,
 and we want our editor to tell us what's in the payload
-when we see an action of type `"chatroom::add_message"`.
+when we see an action of type `"AddMessage"`.
 Using Redoodle TypedActions, the programmer can create a Definition to marry
-the unique action string `"chatroom::add_message"` to the accompanying
-payload data `{message: string, author: string}`.
+the unique action string `"AddMessage"` to the accompanying
+payload data `{ message: string, author: string }`.
 
 Redoodle TypedActions are [FSA](https://github.com/acdlite/flux-standard-action)-compliant.
 
