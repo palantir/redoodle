@@ -1,3 +1,15 @@
+## 2.5.0
+
+- **NOTICE**: TypeScript >= 3.0 required to use Redoodle starting with 2.5.0
+- Add `defineAction()`, a faster alternative to `TypedAction.define()`
+- Add `isType()` helper for usage with definitions returned from `defineAction()`
+- Speed up internal code paths by using plain for loops instead of `for in` or `for of`
+- Remove internal usages of `delete`
+- Greatly simplify logging middleware, which should improve performance in development and improve download times for end application bundles that don't tree-shake
+- Simplify prototype handling
+- [internal] Update to Circle 2
+- [internal] Use Prettier for code formatting
+
 ## 2.4.0
 
 - Add `"sideEffects": false` to package.json ([#25](https://github.com/palantir/redoodle/pull/25))
