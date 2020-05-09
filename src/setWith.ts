@@ -83,18 +83,10 @@ export function setWith(state: any, ...overrides: any[]) {
     if (shallowEqualsPartial(state, overrides[0])) {
       return state;
     } else {
-      return __assign(
-        Object.create(Object.getPrototypeOf(state)),
-        state,
-        overrides[0],
-      );
+      return __assign({}, state, overrides[0]);
     }
   } else {
-    const result = __assign(
-      Object.create(Object.getPrototypeOf(state)),
-      state,
-      ...overrides,
-    );
+    const result = __assign({}, state, ...overrides);
     return shallowEqualsPartial(state, result) ? state : result;
   }
 }

@@ -17,10 +17,6 @@
 
 import { Action, Reducer, combineReducers } from "../index";
 
-interface A {
-  a: number;
-}
-
 function constant(payload: number): Action {
   return {
     type: "test::constant",
@@ -74,38 +70,6 @@ describe("combineReducers", () => {
       expect(() =>
         reducer(undefined as any, { type: "redoodle/test/INIT", payload: {} }),
       ).toThrow();
-    });
-  });
-
-  describe("prototype defense", () => {
-    it("should properly reduce a subkey 'hasOwnProperty'", () => {
-      const reducer = combineReducers({ hasOwnProperty: add });
-      expect(reducer({ hasOwnProperty: 4 }, constant(5))).toEqual({
-        hasOwnProperty: 9,
-      });
-    });
-
-    it("should return an object with Object prototype when given state with Object prototype", () => {
-      const reducer = combineReducers({ a: add });
-      expect(Object.getPrototypeOf(reducer({ a: 4 }, constant(5)))).toBe(
-        Object.prototype,
-      );
-    });
-
-    it("should reduce an initial state with `null` prototype", () => {
-      const initialState = Object.create(null) as A;
-      initialState.a = 4;
-      const reducer = combineReducers({ a: add });
-      expect(reducer(initialState, constant(5))).toEqual({ a: 9 });
-    });
-
-    it("should return an object with null prototype if input state has null prototype", () => {
-      const initialState = Object.create(null) as A;
-      initialState.a = 4;
-      const reducer = combineReducers({ a: add });
-      expect(Object.getPrototypeOf(reducer(initialState, constant(5)))).toEqual(
-        null,
-      );
     });
   });
 });
