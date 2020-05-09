@@ -26,10 +26,6 @@ interface B {
   b: string;
 }
 
-function clean<T>(obj: T): T {
-  return __assign(Object.create(null), obj);
-}
-
 describe("setWith", () => {
   describe("when passed an object that overrides a key with a different value", () => {
     let state: A & B, result: A & B;
@@ -96,26 +92,6 @@ describe("setWith", () => {
       const state = { a: undefined };
       const result = setWith(state, { a: undefined });
       expect(result).toBe(state);
-    });
-  });
-
-  describe("null prototype handling", () => {
-    it("should return source object on no-op update", () => {
-      const state = clean({ a: "hello", b: "world" });
-      const result = setWith(state, { a: "hello" });
-      expect(result).toBe(state);
-    });
-
-    it("should correctly apply update", () => {
-      const state = clean({ a: "hello", b: "world" });
-      const result = setWith(state, { a: "goodbye" });
-      expect(result).toEqual({ a: "goodbye", b: "world" });
-    });
-
-    it("should return object with no prototype on update", () => {
-      const state = clean({ a: "hello", b: "world" });
-      const result = setWith(state, { a: "goodbye" });
-      expect(Object.getPrototypeOf(result)).toBeNull();
     });
   });
 });

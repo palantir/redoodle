@@ -15,7 +15,6 @@
  * limitations under the License.
  */
 
-import { __assign } from "tslib";
 import { Action } from "./Action";
 import { Reducer } from "./Reducer";
 import { ReducerMap } from "./ReducerMap";
@@ -36,10 +35,7 @@ function reduce<S>(
     const newStatePart = reducerMap[key](statePart, action);
     if (newStatePart !== statePart) {
       if (!newState) {
-        newState = __assign(
-          Object.create(Object.getPrototypeOf(state)),
-          state,
-        ) as S;
+        newState = { ...state };
       }
 
       newState[key] = newStatePart;
