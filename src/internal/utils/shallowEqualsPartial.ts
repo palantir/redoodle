@@ -16,7 +16,9 @@
  */
 
 export function shallowEqualsPartial(state: any, partial: any): boolean {
-  for (const key of Object.keys(partial)) {
+  const partialKeys = Object.keys(partial);
+  for (let i = 0; i < partialKeys.length; i++) {
+    const key = partialKeys[i];
     if (partial[key] !== state[key]) {
       return false;
     }

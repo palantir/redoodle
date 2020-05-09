@@ -19,9 +19,9 @@ import { __assign } from "tslib";
 
 const hasOwnProperty = Object.prototype.hasOwnProperty;
 
-function anyDefined(state: any, keys: string[]): boolean {
-  for (const key of keys) {
-    if (hasOwnProperty.call(state, key)) {
+function hasAny(state: any, keys: string[]): boolean {
+  for (let i = 0; i < keys.length; i++) {
+    if (hasOwnProperty.call(state, keys[i])) {
       return true;
     }
   }
@@ -41,14 +41,20 @@ function anyDefined(state: any, keys: string[]): boolean {
  *      a prototype if the input `state` has no prototype.
  */
 export function omit<S extends {[key: string]: any}>(state: S, keys: (keyof S)[]): S {
-  if (!anyDefined(state, keys as string[])) {
+  if (!hasAny(state, keys as string[])) {
     return state;
   }
 
-  const result = __assign(Object.create(Object.getPrototypeOf(state)), state);
-  for (const key of keys) {
-    delete result[key];
+  const omitSet = new Set(keys);
+  const stateKeys = Object.keys(state) as (keyof S)[];
+  const retval: S = {} as S;
+
+  for (let i = 0; i < stateKeys.length; i++) {
+    const key = stateKeys[i];
+    if (!omitSet.has(key)) {
+      retval[key] = state[key];
+    }
   }
 
-  return result;
+  return retval;
 }

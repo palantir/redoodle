@@ -30,7 +30,8 @@ function reduce<S>(
 ) {
   let newState: S | undefined = undefined;
 
-  for (const key of reducerKeys) {
+  for (let i = 0; i < reducerKeys.length; i++) {
+    const key = reducerKeys[i];
     const statePart = state[key];
     const newStatePart = reducerMap[key](statePart, action);
     if (newStatePart !== statePart) {
