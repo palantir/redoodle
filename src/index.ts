@@ -31,6 +31,8 @@ export { combineReducers } from "./combineReducers";
 export { composeReducers } from "./composeReducers";
 export { compoundActionsEnhancer } from "./compoundActionsEnhancer";
 export { createStore } from "./createStore";
+export { defineAction } from "./defineAction";
+export { isType } from "./isType";
 export { loggingMiddleware } from "./loggingMiddleware";
 export { omit } from "./omit";
 export { reduceCompoundActions } from "./reduceCompoundActions";
