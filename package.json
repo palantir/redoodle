@@ -8,7 +8,7 @@
   "scripts": {
     "lint": "find src -type f | xargs tslint -c tslint.json",
     "prepare": "yarn run clean && yarn run build",
-    "test": "jest && yarn run lint",
+    "test": "jest",
     "build": "yarn run clean && tsc",
     "clean": "rm -rf lib/",
     "docs:clean": "rm -rf _book/",
