@@ -55,6 +55,6 @@ export type TypedActionDefinition2<E extends string, T> = {
        * When the action has no payload type, you can simply invoke the Definition with no args
        * to create the action `{ type: "Foo", payload: undefined }`
        */
-    (): { type: E; payload: undefined };
-  }
+      (): { type: E; payload: undefined };
+    }
   : {});

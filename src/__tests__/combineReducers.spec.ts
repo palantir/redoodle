@@ -46,58 +46,66 @@ describe("combineReducers", () => {
   });
 
   it("should delegate to a single reducer for a key", () => {
-    const reducer = combineReducers({a: add});
-    expect(reducer({a: 4}, constant(5))).toEqual({a: 9});
+    const reducer = combineReducers({ a: add });
+    expect(reducer({ a: 4 }, constant(5))).toEqual({ a: 9 });
   });
 
   it("should delegate to multiple reducers for each action", () => {
-    const reducer = combineReducers({a: add, b: add});
-    expect(reducer({a: 4, b: 40}, constant(5))).toEqual({a: 9, b: 45});
+    const reducer = combineReducers({ a: add, b: add });
+    expect(reducer({ a: 4, b: 40 }, constant(5))).toEqual({ a: 9, b: 45 });
   });
 
   it("should throw on first invocation if state and reducers have mismatched shape", () => {
-    const reduceA = combineReducers<any>({a: add});
-    expect(() => reduceA({a: 4, b: 40}, constant(5))).toThrow();
+    const reduceA = combineReducers<any>({ a: add });
+    expect(() => reduceA({ a: 4, b: 40 }, constant(5))).toThrow();
 
-    const reduceAB = combineReducers<any>({a: add, b: add});
-    expect(() => reduceAB({a: 4}, constant(5))).toThrow();
+    const reduceAB = combineReducers<any>({ a: add, b: add });
+    expect(() => reduceAB({ a: 4 }, constant(5))).toThrow();
   });
 
   describe("initial state handling", () => {
     it("should not throw on creation (initial state handled externally)", () => {
-      const reducer = combineReducers({a: add});
+      const reducer = combineReducers({ a: add });
       expect(reducer).toBeDefined();
     });
 
     it("should throw when a reducer returns undefined on input state == null", () => {
-      const reducer = combineReducers({a: add, b: () => 0});
-      expect(() => reducer(undefined as any, {type: "redoodle/test/INIT", payload: {}})).toThrow();
+      const reducer = combineReducers({ a: add, b: () => 0 });
+      expect(() =>
+        reducer(undefined as any, { type: "redoodle/test/INIT", payload: {} }),
+      ).toThrow();
     });
   });
 
   describe("prototype defense", () => {
     it("should properly reduce a subkey 'hasOwnProperty'", () => {
-      const reducer = combineReducers({hasOwnProperty: add});
-      expect(reducer({hasOwnProperty: 4}, constant(5))).toEqual({hasOwnProperty: 9});
+      const reducer = combineReducers({ hasOwnProperty: add });
+      expect(reducer({ hasOwnProperty: 4 }, constant(5))).toEqual({
+        hasOwnProperty: 9,
+      });
     });
 
     it("should return an object with Object prototype when given state with Object prototype", () => {
-      const reducer = combineReducers({a: add});
-      expect(Object.getPrototypeOf(reducer({a: 4}, constant(5)))).toBe(Object.prototype);
+      const reducer = combineReducers({ a: add });
+      expect(Object.getPrototypeOf(reducer({ a: 4 }, constant(5)))).toBe(
+        Object.prototype,
+      );
     });
 
     it("should reduce an initial state with `null` prototype", () => {
       const initialState = Object.create(null) as A;
       initialState.a = 4;
-      const reducer = combineReducers({a: add});
-      expect(reducer(initialState, constant(5))).toEqual({a: 9});
+      const reducer = combineReducers({ a: add });
+      expect(reducer(initialState, constant(5))).toEqual({ a: 9 });
     });
 
     it("should return an object with null prototype if input state has null prototype", () => {
       const initialState = Object.create(null) as A;
       initialState.a = 4;
-      const reducer = combineReducers({a: add});
-      expect(Object.getPrototypeOf(reducer(initialState, constant(5)))).toEqual(null);
+      const reducer = combineReducers({ a: add });
+      expect(Object.getPrototypeOf(reducer(initialState, constant(5)))).toEqual(
+        null,
+      );
     });
   });
 });

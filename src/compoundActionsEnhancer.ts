@@ -33,7 +33,8 @@ export function compoundActionsEnhancer(): StoreEnhancer {
       return {
         dispatch: store.dispatch,
         getState: store.getState,
-        replaceReducer: (newReducer) => store.replaceReducer(reduceCompoundActions(newReducer)),
+        replaceReducer: (newReducer) =>
+          store.replaceReducer(reduceCompoundActions(newReducer)),
         subscribe: store.subscribe,
       };
     };

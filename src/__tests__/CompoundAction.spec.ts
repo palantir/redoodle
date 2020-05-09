@@ -15,7 +15,12 @@
  * limitations under the License.
  */
 
-import { Action, CompoundAction, TypedAction, reduceCompoundActions } from "../index";
+import {
+  Action,
+  CompoundAction,
+  TypedAction,
+  reduceCompoundActions,
+} from "../index";
 
 const SetMessage = TypedAction.define("test::set_message")<string>();
 
@@ -33,8 +38,14 @@ describe("CompoundAction", () => {
     });
 
     it("should forward a list of actions as a payload", () => {
-      const action = CompoundAction.create([SetMessage.create("hello"), SetMessage.create("world")]);
-      expect(action.payload).toEqual([SetMessage.create("hello"), SetMessage.create("world")]);
+      const action = CompoundAction.create([
+        SetMessage.create("hello"),
+        SetMessage.create("world"),
+      ]);
+      expect(action.payload).toEqual([
+        SetMessage.create("hello"),
+        SetMessage.create("world"),
+      ]);
     });
   });
 
@@ -45,8 +56,8 @@ describe("CompoundAction", () => {
 
     const concatenatingReducer = (state: ConcatenatedState, action: Action) => {
       return SetMessage.is(action)
-          ? {messages: [...state.messages, action.payload]}
-          : state;
+        ? { messages: [...state.messages, action.payload] }
+        : state;
     };
 
     it("should handle one-level nesting", () => {
@@ -59,14 +70,12 @@ describe("CompoundAction", () => {
         ]),
       ]);
 
-      const reduced = reduceCompoundActions(concatenatingReducer)({messages: []}, action);
+      const reduced = reduceCompoundActions(concatenatingReducer)(
+        { messages: [] },
+        action,
+      );
       expect(reduced).toEqual({
-        messages: [
-          "redoodle",
-          "is",
-          "not",
-          "bad",
-        ],
+        messages: ["redoodle", "is", "not", "bad"],
       });
     });
 
@@ -76,20 +85,16 @@ describe("CompoundAction", () => {
         SetMessage.create("is"),
         CompoundAction.create([
           SetMessage.create("not"),
-          CompoundAction.create([
-            SetMessage.create("bad"),
-          ]),
+          CompoundAction.create([SetMessage.create("bad")]),
         ]),
       ]);
 
-      const reduced = reduceCompoundActions(concatenatingReducer)({messages: []}, action);
+      const reduced = reduceCompoundActions(concatenatingReducer)(
+        { messages: [] },
+        action,
+      );
       expect(reduced).toEqual({
-        messages: [
-          "redoodle",
-          "is",
-          "not",
-          "bad",
-        ],
+        messages: ["redoodle", "is", "not", "bad"],
       });
     });
   });

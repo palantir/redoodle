@@ -22,7 +22,7 @@ import { TypedActionString } from "../TypedActionString";
 import { TypedReducer } from "../TypedReducer";
 
 export class TypedReducerBuilderImpl<S> implements TypedReducer.Builder<S> {
-  private typedHandlers: {[type: string]: Reducer<S>} = {};
+  private typedHandlers: { [type: string]: Reducer<S> } = {};
   private defaultHandler: Reducer<S> | undefined;
 
   withHandler<T>(
@@ -41,9 +41,13 @@ export class TypedReducerBuilderImpl<S> implements TypedReducer.Builder<S> {
     if (this.typedHandlers[type as string]) {
       if (process.env.NODE_ENV === "production") {
         // tslint:disable-next-line:no-console
-        console.error(`Multiple typed reducer handlers specified in typed reducer for type ${type}. Using newer.`);
+        console.error(
+          `Multiple typed reducer handlers specified in typed reducer for type ${type}. Using newer.`,
+        );
       } else {
-        throw new Error(`Multiple typed reducer handlers specified in typed reducer for type ${type}.`);
+        throw new Error(
+          `Multiple typed reducer handlers specified in typed reducer for type ${type}.`,
+        );
       }
     }
 
@@ -51,15 +55,17 @@ export class TypedReducerBuilderImpl<S> implements TypedReducer.Builder<S> {
     return this;
   }
 
-  withDefaultHandler(
-    handler: (state: S, action: Action) => S,
-  ) {
+  withDefaultHandler(handler: (state: S, action: Action) => S) {
     if (this.defaultHandler) {
       if (process.env.NODE_ENV === "production") {
         // tslint:disable-next-line:no-console
-        console.error("Multiple default handlers specified in typed reducer. Using newer.");
+        console.error(
+          "Multiple default handlers specified in typed reducer. Using newer.",
+        );
       } else {
-        throw new Error("Multiple default handlers specified in typed reducer.");
+        throw new Error(
+          "Multiple default handlers specified in typed reducer.",
+        );
       }
     }
 
@@ -68,16 +74,21 @@ export class TypedReducerBuilderImpl<S> implements TypedReducer.Builder<S> {
   }
 
   build(): Reducer<S> {
-    const defaultHandler: Reducer<S> = this.defaultHandler || ((state: S) => state);
-    return new TypedReducerImpl<S>({...this.typedHandlers}, defaultHandler).reduce;
+    const defaultHandler: Reducer<S> =
+      this.defaultHandler || ((state: S) => state);
+    return new TypedReducerImpl<S>({ ...this.typedHandlers }, defaultHandler)
+      .reduce;
   }
 }
 
 class TypedReducerImpl<S> {
-  private typedHandlers: {[type: string]: Reducer<S>};
+  private typedHandlers: { [type: string]: Reducer<S> };
   private defaultHandler: Reducer<S>;
 
-  constructor(typedHandlers: {[type: string]: Reducer<S>}, defaultHandler: Reducer<S>) {
+  constructor(
+    typedHandlers: { [type: string]: Reducer<S> },
+    defaultHandler: Reducer<S>,
+  ) {
     this.typedHandlers = typedHandlers;
     this.defaultHandler = defaultHandler;
   }
@@ -89,5 +100,5 @@ class TypedReducerImpl<S> {
     } else {
       return this.defaultHandler(state, action);
     }
-  }
+  };
 }

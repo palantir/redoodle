@@ -24,6 +24,7 @@
     "@types/jest": "^19.2.2",
     "gitbook-cli": "^2.3.0",
     "jest": "^19.0.2",
+    "prettier": "^2.0.5",
     "redux": "^4.0.0",
     "ts-jest": "^19.0.13",
     "tslint": "^5.11.0",

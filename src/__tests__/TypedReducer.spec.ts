@@ -39,7 +39,7 @@ describe("TypedReducer", () => {
 
   it("should allow specification of default reducer", () => {
     const reducer = TypedReducer.builder()
-      .withDefaultHandler(state => state + "!")
+      .withDefaultHandler((state) => state + "!")
       .build();
 
     expect(reducer("hello", Count.create(3))).toEqual("hello!");
@@ -47,52 +47,64 @@ describe("TypedReducer", () => {
 
   it("should allow specification of typed mappings", () => {
     const reducer = TypedReducer.builder<CountState>()
-      .withActionHandler(Count.TYPE, (state, action) => ({total: state.total + action.payload}))
+      .withActionHandler(Count.TYPE, (state, action) => ({
+        total: state.total + action.payload,
+      }))
       .build();
 
-    expect(reducer({total: 5}, Count.create(3))).toEqual({total: 8});
+    expect(reducer({ total: 5 }, Count.create(3))).toEqual({ total: 8 });
   });
 
   it("should allow specifying payload-only handlers", () => {
     const reducer = TypedReducer.builder<CountState>()
-      .withHandler(Count.TYPE, (state, toAdd) => ({total: state.total + toAdd}))
+      .withHandler(Count.TYPE, (state, toAdd) => ({
+        total: state.total + toAdd,
+      }))
       .build();
 
-    expect(reducer({total: 5}, Count.create(3))).toEqual({total: 8});
+    expect(reducer({ total: 5 }, Count.create(3))).toEqual({ total: 8 });
   });
 
   it("should only invoke handlers for existing actions", () => {
     const reducer = TypedReducer.builder<CountState>()
-      .withActionHandler(Count.TYPE, (_state, _action): CountState => {
-        throw new Error("handle COUNT should not have been called");
-      })
+      .withActionHandler(
+        Count.TYPE,
+        (_state, _action): CountState => {
+          throw new Error("handle COUNT should not have been called");
+        },
+      )
       .build();
 
-    expect(reducer({total: 5}, Reset.create(3))).toEqual({total: 5});
+    expect(reducer({ total: 5 }, Reset.create(3))).toEqual({ total: 5 });
   });
 
   it("should allow specifying multiple handlers", () => {
     const reducer = TypedReducer.builder<CountState>()
-      .withActionHandler(Count.TYPE, (state, action) => ({total: state.total + action.payload}))
-      .withActionHandler(Reset.TYPE, (_state, action) => ({total: action.payload}))
+      .withActionHandler(Count.TYPE, (state, action) => ({
+        total: state.total + action.payload,
+      }))
+      .withActionHandler(Reset.TYPE, (_state, action) => ({
+        total: action.payload,
+      }))
       .build();
 
-    let countState: CountState = {total: 5};
+    let countState: CountState = { total: 5 };
     countState = reducer(countState, Reset.create(10));
     countState = reducer(countState, Count.create(4));
-    expect(countState).toEqual({total: 14});
+    expect(countState).toEqual({ total: 14 });
   });
 
   it("should preserve typings (complex code compiles)", () => {
     const reducer = TypedReducer.builder<CountState>()
       .withActionHandler(Log.TYPE, (state, action) => ({
-        total: state.total + action.payload.map(s => s.length).reduce((a, b) => a + b),
+        total:
+          state.total +
+          action.payload.map((s) => s.length).reduce((a, b) => a + b),
       }))
       .build();
 
-    expect(reducer({total: 8}, Log.create([
-      "foobar",
-      "world",
-    ]))).toEqual({total: 19});
+    expect(reducer({ total: 8 }, Log.create(["foobar", "world"]))).toEqual({
+      total: 19,
+    });
   });
 });

@@ -34,12 +34,12 @@ describe("setWith", () => {
   describe("when passed an object that overrides a key with a different value", () => {
     let state: A & B, result: A & B;
     beforeAll(() => {
-      state = {a: "hello", b: "world"};
-      result = setWith<typeof state, keyof A>(state, {a: "goodbye"});
+      state = { a: "hello", b: "world" };
+      result = setWith<typeof state, keyof A>(state, { a: "goodbye" });
     });
 
     it("should not mutate the source object", () => {
-      expect(state).toEqual({a: "hello", b: "world"});
+      expect(state).toEqual({ a: "hello", b: "world" });
     });
 
     it("should return a new object reference", () => {
@@ -47,19 +47,19 @@ describe("setWith", () => {
     });
 
     it("should apply the update", () => {
-      expect(result).toEqual({a: "goodbye", b: "world"});
+      expect(result).toEqual({ a: "goodbye", b: "world" });
     });
   });
 
   describe("when passed an object that overrides a key with the same value", () => {
     let state: A & B, result: A & B;
     beforeAll(() => {
-      state = {a: "hello", b: "world"};
-      result = setWith<typeof state, keyof A>(state, {a: "hello"});
+      state = { a: "hello", b: "world" };
+      result = setWith<typeof state, keyof A>(state, { a: "hello" });
     });
 
     it("should not mutate the source object", () => {
-      expect(state).toEqual({a: "hello", b: "world"});
+      expect(state).toEqual({ a: "hello", b: "world" });
     });
 
     it("should not return a new object reference", () => {
@@ -70,51 +70,51 @@ describe("setWith", () => {
   describe("when passed an object with non-overlapping key", () => {
     let state: A & Partial<B>, result: A & Partial<B>;
     beforeAll(() => {
-      state = {a: "hello"};
-      result = setWith<typeof state, keyof B>(state, {b: "world"});
+      state = { a: "hello" };
+      result = setWith<typeof state, keyof B>(state, { b: "world" });
     });
 
     it("should not mutate the source object", () => {
-      expect(state).toEqual({a: "hello"});
+      expect(state).toEqual({ a: "hello" });
     });
 
     it("should apply the update", () => {
-      expect(result).toEqual({a: "hello", b: "world"});
+      expect(result).toEqual({ a: "hello", b: "world" });
     });
   });
 
   describe("`undefined` value handling", () => {
     it("should treat new `undefined` values as updates", () => {
-      const state = {a: "hello"};
-      const result = setWith(state as any, {b: undefined});
+      const state = { a: "hello" };
+      const result = setWith(state as any, { b: undefined });
       expect(result).not.toBe(state);
       expect(Object.prototype.hasOwnProperty.call(result, "b")).toBe(true);
       expect(result.b).toBeUndefined();
     });
 
     it("should treat overriding `undefined` as no-op", () => {
-      const state = {a: undefined};
-      const result = setWith(state, {a: undefined});
+      const state = { a: undefined };
+      const result = setWith(state, { a: undefined });
       expect(result).toBe(state);
     });
   });
 
   describe("null prototype handling", () => {
     it("should return source object on no-op update", () => {
-      const state = clean({a: "hello", b: "world"});
-      const result = setWith(state, {a: "hello"});
+      const state = clean({ a: "hello", b: "world" });
+      const result = setWith(state, { a: "hello" });
       expect(result).toBe(state);
     });
 
     it("should correctly apply update", () => {
-      const state = clean({a: "hello", b: "world"});
-      const result = setWith(state, {a: "goodbye"});
-      expect(result).toEqual({a: "goodbye", b: "world"});
+      const state = clean({ a: "hello", b: "world" });
+      const result = setWith(state, { a: "goodbye" });
+      expect(result).toEqual({ a: "goodbye", b: "world" });
     });
 
     it("should return object with no prototype on update", () => {
-      const state = clean({a: "hello", b: "world"});
-      const result = setWith(state, {a: "goodbye"});
+      const state = clean({ a: "hello", b: "world" });
+      const result = setWith(state, { a: "goodbye" });
       expect(Object.getPrototypeOf(result)).toBeNull();
     });
   });

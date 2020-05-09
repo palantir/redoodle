@@ -104,11 +104,11 @@ describe("TypedAction", () => {
 
     describe("#is", () => {
       it("should return `true` for actions with matching type", () => {
-        expect(SetMessage.is({type: "test::set_message"})).toBe(true);
+        expect(SetMessage.is({ type: "test::set_message" })).toBe(true);
       });
 
       it("should return `false` for actions with mismatched type", () => {
-        expect(SetMessage.is({type: "test::other"})).toBe(false);
+        expect(SetMessage.is({ type: "test::other" })).toBe(false);
       });
 
       it("should apply type guard", () => {
@@ -120,9 +120,9 @@ describe("TypedAction", () => {
       });
 
       it("should not crash on actions with non-string types", () => {
-        SetMessage.is({type: false});
+        SetMessage.is({ type: false });
         SetMessage.is({} as any);
-        SetMessage.is({type: Object.create(null)});
+        SetMessage.is({ type: Object.create(null) });
         // pass
       });
     });
@@ -132,7 +132,7 @@ describe("TypedAction", () => {
     let SetMessage: TypedAction.Definition<"test::set_message", string>;
     beforeAll(() => {
       SetMessage = TypedAction.define("test::set_message")<string>({
-        validate: message => message !== "blacklist",
+        validate: (message) => message !== "blacklist",
       });
     });
 
@@ -240,11 +240,11 @@ describe("TypedAction", () => {
 
     describe("#is", () => {
       it("should return `true` for actions with matching type", () => {
-        expect(SetMessage.is({type: "test::set_message"})).toBe(true);
+        expect(SetMessage.is({ type: "test::set_message" })).toBe(true);
       });
 
       it("should return `false` for actions with mismatched type", () => {
-        expect(SetMessage.is({type: "test::other"})).toBe(false);
+        expect(SetMessage.is({ type: "test::other" })).toBe(false);
       });
 
       it("should apply type guard", () => {
@@ -256,14 +256,16 @@ describe("TypedAction", () => {
       });
 
       it("should not crash on actions with non-string types", () => {
-        SetMessage.is({type: false});
+        SetMessage.is({ type: false });
         SetMessage.is({} as any);
-        SetMessage.is({type: Object.create(null)});
+        SetMessage.is({ type: Object.create(null) });
         // pass
       });
 
       it("should return `true` even if payload would fail validation", () => {
-        expect(SetMessage.is({type: "test::set_message", payload: "blacklist"})).toBe(true);
+        expect(
+          SetMessage.is({ type: "test::set_message", payload: "blacklist" }),
+        ).toBe(true);
       });
     });
   });

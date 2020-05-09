@@ -28,7 +28,6 @@ import { TypedReducerBuilderImpl } from "./internal/TypedReducerBuilderImpl";
  * in each of your Action type branches.
  */
 export namespace TypedReducer {
-
   /**
    * Builder interface for constructing Reducers using TypedActions.
    * Consumers should define their reducer using a sequence of `.withHandler()`,
@@ -88,9 +87,7 @@ export namespace TypedReducer {
      *
      * It is an error to specify more than one `reducingDefault()` to the same Builder.
      */
-    withDefaultHandler(
-      handler: (state: S, action: Action) => S,
-    ): this;
+    withDefaultHandler(handler: (state: S, action: Action) => S): this;
 
     /**
      * Returns the Reducer backed by all of the handlers defined on this Builder.

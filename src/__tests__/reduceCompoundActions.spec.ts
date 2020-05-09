@@ -15,7 +15,13 @@
  * limitations under the License.
  */
 
-import { Action, CompoundAction, Reducer, TypedAction, reduceCompoundActions } from "../index";
+import {
+  Action,
+  CompoundAction,
+  Reducer,
+  TypedAction,
+  reduceCompoundActions,
+} from "../index";
 
 const SetMessage = TypedAction.define("test::set_message")<string>();
 
@@ -38,9 +44,7 @@ describe("reduceCompoundActions", () => {
 
   it("should delegate normal actions", () => {
     reduce("", SetMessage.create("hello"));
-    expect(delegate.mock.calls).toEqual([
-      ["", SetMessage.create("hello")],
-    ]);
+    expect(delegate.mock.calls).toEqual([["", SetMessage.create("hello")]]);
   });
 
   it("should reduce normal actions to delegate's value", () => {
@@ -60,22 +64,26 @@ describe("reduceCompoundActions", () => {
 
   it("should delegate a single wrapped action", () => {
     reduce("", CompoundAction.create([SetMessage.create("hello")]));
-    expect(delegate.mock.calls).toEqual([
-      ["", SetMessage.create("hello")],
-    ]);
+    expect(delegate.mock.calls).toEqual([["", SetMessage.create("hello")]]);
   });
 
   it("should reduce a single wrapped action to delegate's value", () => {
-    const result = reduce("", CompoundAction.create([SetMessage.create("hello")]));
+    const result = reduce(
+      "",
+      CompoundAction.create([SetMessage.create("hello")]),
+    );
     expect(result).toEqual("hello");
   });
 
   it("should delegate multiple wrapped actions in order", () => {
-    reduce("", CompoundAction.create([
-      SetMessage.create("one"),
-      SetMessage.create("two"),
-      SetMessage.create("three"),
-    ]));
+    reduce(
+      "",
+      CompoundAction.create([
+        SetMessage.create("one"),
+        SetMessage.create("two"),
+        SetMessage.create("three"),
+      ]),
+    );
 
     expect(delegate.mock.calls).toEqual([
       ["", SetMessage.create("one")],
@@ -85,24 +93,30 @@ describe("reduceCompoundActions", () => {
   });
 
   it("should reduce multiple wrapped actions to final delegate value", () => {
-    const result = reduce("", CompoundAction.create([
-      SetMessage.create("one"),
-      SetMessage.create("two"),
-      SetMessage.create("three"),
-    ]));
+    const result = reduce(
+      "",
+      CompoundAction.create([
+        SetMessage.create("one"),
+        SetMessage.create("two"),
+        SetMessage.create("three"),
+      ]),
+    );
 
     expect(result).toEqual("three");
   });
 
   it("should delegate and unwrap deeply nested compound actions in order", () => {
-    reduce("", CompoundAction.create([
-      SetMessage.create("one"),
+    reduce(
+      "",
       CompoundAction.create([
-        SetMessage.create("two"),
-        SetMessage.create("three"),
+        SetMessage.create("one"),
+        CompoundAction.create([
+          SetMessage.create("two"),
+          SetMessage.create("three"),
+        ]),
+        SetMessage.create("four"),
       ]),
-      SetMessage.create("four"),
-    ]));
+    );
 
     expect(delegate.mock.calls).toEqual([
       ["", SetMessage.create("one")],
@@ -113,14 +127,17 @@ describe("reduceCompoundActions", () => {
   });
 
   it("should reduce deeply nested compound actions to final delegate value", () => {
-    const result = reduce("", CompoundAction.create([
-      SetMessage.create("one"),
+    const result = reduce(
+      "",
       CompoundAction.create([
-        SetMessage.create("two"),
-        SetMessage.create("three"),
+        SetMessage.create("one"),
+        CompoundAction.create([
+          SetMessage.create("two"),
+          SetMessage.create("three"),
+        ]),
+        SetMessage.create("four"),
       ]),
-      SetMessage.create("four"),
-    ]));
+    );
 
     expect(result).toEqual("four");
   });
