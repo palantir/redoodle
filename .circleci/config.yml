@@ -47,6 +47,17 @@ jobs:
           name: lint
           command: yarn lint
 
+  prettier:
+    docker:
+      - image: circleci/node:10.16.3
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ./
+      - run:
+          name: prettier
+          command: ./node_modules/.bin/prettier --check src/**/*
+
 workflows:
   version: 2
   check:
@@ -56,5 +67,8 @@ workflows:
           requires:
             - build
       - lint:
+          requires:
+            - build
+      - prettier:
           requires:
             - build

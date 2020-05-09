@@ -35,7 +35,11 @@ interface Listener {
  *
  * If you do want an expanded feature set, please do consider using the stock Redux.createStore().
  */
-export function createStore<S>(reducer: Reducer<S>, initialState: S, enhancer?: StoreEnhancer): Store<S> {
+export function createStore<S>(
+  reducer: Reducer<S>,
+  initialState: S,
+  enhancer?: StoreEnhancer,
+): Store<S> {
   if (typeof enhancer !== "undefined") {
     return enhancer<S>(createStore)(reducer, initialState);
   }
@@ -79,7 +83,7 @@ export function createStore<S>(reducer: Reducer<S>, initialState: S, enhancer?: 
     if (!isPlainObject(action)) {
       throw new Error(
         "Actions must be plain objects. " +
-        "Use custom middleware for async actions.",
+          "Use custom middleware for async actions.",
       );
     }
 
@@ -94,7 +98,7 @@ export function createStore<S>(reducer: Reducer<S>, initialState: S, enhancer?: 
       isDispatching = false;
     }
 
-    const listeners = currentListeners = nextListeners;
+    const listeners = (currentListeners = nextListeners);
     for (let i = 0; i < listeners.length; i++) {
       listeners[i]();
     }

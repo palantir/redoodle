@@ -40,7 +40,10 @@ function hasAny(state: any, keys: string[]): boolean {
  *  4. This function is careful about prototype handling, and will return an object without
  *      a prototype if the input `state` has no prototype.
  */
-export function omit<S extends {[key: string]: any}>(state: S, keys: (keyof S)[]): S {
+export function omit<S extends { [key: string]: any }>(
+  state: S,
+  keys: (keyof S)[],
+): S {
   if (!hasAny(state, keys as string[])) {
     return state;
   }

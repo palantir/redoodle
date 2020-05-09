@@ -78,7 +78,6 @@ export interface TypedAction<T, E extends string = string> {
 }
 
 export namespace TypedAction {
-
   /**
    * **DEPRECATED**: As of Redoodle 2.5.0, consumers should prefer `defineAction()`
    * over than `TypedAction.define()`. See https://github.com/palantir/redoodle/issues/35
@@ -128,9 +127,15 @@ export namespace TypedAction {
    *
    * @deprecated
    */
-  export function define<E extends string>(type: E): <T>(options?: DefineOptions<T>) => Definition<E, T> {
+  export function define<E extends string>(
+    type: E,
+  ): <T>(options?: DefineOptions<T>) => Definition<E, T> {
     return <T>(options?: DefineOptions<T>) => {
-      if (process.env.NODE_ENV !== "production" && options !== undefined && options.validate !== undefined) {
+      if (
+        process.env.NODE_ENV !== "production" &&
+        options !== undefined &&
+        options.validate !== undefined
+      ) {
         return createDefinitionWithValidator<E, T>(type, options.validate);
       } else {
         return createDefinition<E, T>(type);
@@ -160,7 +165,9 @@ export namespace TypedAction {
    *
    * @deprecated
    */
-  export function defineWithoutPayload<E extends string>(type: E): () => NoPayloadDefinition<E> {
+  export function defineWithoutPayload<E extends string>(
+    type: E,
+  ): () => NoPayloadDefinition<E> {
     return () => {
       return createNoPayloadDefinition<E>(type);
     };
@@ -180,7 +187,7 @@ export namespace TypedAction {
      * Creates an Action of this type with the given payload.
      * Functionally equivalent to the explicit Definition.create().
      */
-    (payload: T): {type: E, payload: T};
+    (payload: T): { type: E; payload: T };
 
     /**
      * The Type of a TypedAction refers to the physical `{type}` string
@@ -203,12 +210,12 @@ export namespace TypedAction {
     /**
      * Creates an Action of this type with the given payload.
      */
-    create(payload: T): {type: E, payload: T};
+    create(payload: T): { type: E; payload: T };
 
     /**
      * Creates an Action of this type with the given payload and meta.
      */
-    createWithMeta<M>(payload: T, meta: M): {type: E, payload: T, meta: M};
+    createWithMeta<M>(payload: T, meta: M): { type: E; payload: T; meta: M };
 
     /**
      * Checks whether the given Action matches this Definition, based on its own `type`.
@@ -220,7 +227,9 @@ export namespace TypedAction {
     is(action: Action): action is TypedAction<T, E>;
   }
 
-  export type PayloadOf<D extends Definition<any, any>> = D["TYPE"]["__type__"]["withPayload"];
+  export type PayloadOf<
+    D extends Definition<any, any>
+  > = D["TYPE"]["__type__"]["withPayload"];
 
   /**
    * A TypedAction.NoPayloadDefinition manages all Redux actions of a specific type string,
@@ -238,7 +247,7 @@ export namespace TypedAction {
      * Creates an Action of this type (and no payload).
      * Functionally equivalent to the explicit NoPayloadDefinition.create().
      */
-    (): {type: E, payload: never};
+    (): { type: E; payload: never };
 
     /**
      * The Type of a TypedAction refers to the physical `{type}` string
@@ -250,12 +259,12 @@ export namespace TypedAction {
     /**
      * Creates an Action of this type (and no payload).
      */
-    create(): {type: E, payload: never};
+    create(): { type: E; payload: never };
 
     /**
      * Creates an Action of this type with the given meta (and no payload).
      */
-    createWithMeta<M>(meta: M): {type: E, payload: never, meta: M};
+    createWithMeta<M>(meta: M): { type: E; payload: never; meta: M };
 
     /**
      * Checks whether the given Action matches this Definition, based on its own `type`.
@@ -268,12 +277,15 @@ export namespace TypedAction {
   }
 
   function createDefinition<E extends string, T>(type: E): Definition<E, T> {
-    const create = (payload: T): {type: E, payload: T} => {
-      return {type, payload};
+    const create = (payload: T): { type: E; payload: T } => {
+      return { type, payload };
     };
 
-    const createWithMeta = <M>(payload: T, meta: M): {type: E, payload: T, meta: M} => {
-      return {type, payload, meta};
+    const createWithMeta = <M>(
+      payload: T,
+      meta: M,
+    ): { type: E; payload: T; meta: M } => {
+      return { type, payload, meta };
     };
 
     const is = (action: Action): action is TypedAction<T, E> => {
@@ -293,20 +305,23 @@ export namespace TypedAction {
     type: E,
     validate: (payload: T) => boolean,
   ): Definition<E, T> {
-    const create = (payload: T): {type: E, payload: T} => {
+    const create = (payload: T): { type: E; payload: T } => {
       if (!validate(payload)) {
         throw new Error(`'${type}' validation failed`);
       }
 
-      return {type, payload};
+      return { type, payload };
     };
 
-    const createWithMeta = <M>(payload: T, meta: M): {type: E, payload: T, meta: M} => {
+    const createWithMeta = <M>(
+      payload: T,
+      meta: M,
+    ): { type: E; payload: T; meta: M } => {
       if (!validate(payload)) {
         throw new Error(`'${type}' validation failed`);
       }
 
-      return {type, payload, meta};
+      return { type, payload, meta };
     };
 
     const is = (action: Action): action is TypedAction<T, E> => {
@@ -322,13 +337,17 @@ export namespace TypedAction {
     return def;
   }
 
-  function createNoPayloadDefinition<E extends string>(type: E): NoPayloadDefinition<E> {
-    const create = (): {type: E, payload: never} => {
-      return {type} as {type: E, payload: never};
+  function createNoPayloadDefinition<E extends string>(
+    type: E,
+  ): NoPayloadDefinition<E> {
+    const create = (): { type: E; payload: never } => {
+      return { type } as { type: E; payload: never };
     };
 
-    const createWithMeta = <M>(meta: M): {type: E, payload: never, meta: M} => {
-      return {type, meta} as {type: E, payload: never, meta: M};
+    const createWithMeta = <M>(
+      meta: M,
+    ): { type: E; payload: never; meta: M } => {
+      return { type, meta } as { type: E; payload: never; meta: M };
     };
 
     const is = (action: Action): action is TypedAction<never, E> => {

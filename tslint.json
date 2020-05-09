@@ -9,42 +9,18 @@
       "check-space"
     ],
     "curly": true,
-    "eofline": true,
-    "forin": true,
-    "indent": [
-      true,
-      "spaces"
-    ],
     "interface-name": [
       true,
       "never-prefix"
     ],
     "jsdoc-format": true,
     "label-position": true,
-    "max-line-length": [
-      true,
-      120
-    ],
     "new-parens": true,
     "no-angle-bracket-type-assertion": true,
     "no-arg": true,
     "no-bitwise": true,
     "no-conditional-assignment": true,
-    "no-consecutive-blank-lines": [
-      true,
-      2
-    ],
-    "no-console": [
-      true,
-      "log",
-      "warn",
-      "error",
-      "debug",
-      "info",
-      "time",
-      "timeEnd",
-      "trace"
-    ],
+    "no-console": true,
     "no-construct": true,
     "no-debugger": true,
     "no-duplicate-variable": true,
@@ -76,51 +52,10 @@
       true,
       "double"
     ],
-    "semicolon": [true, "always"],
     "switch-default": true,
-    "ter-indent": [
-      true,
-      2,
-      {
-        "CallExpression": {
-          "arguments": 1
-        },
-        "FunctionDeclaration": {
-          "body": 1,
-          "parameters": 1
-        },
-        "FunctionExpression": {
-          "body": 1,
-          "parameters": 1
-        },
-        "MemberExpression": 2,
-        "SwitchCase": 1
-      }
-    ],
-    "trailing-comma": [
-      true,
-      {"multiline": "always", "singleline": "never"}
-    ],
     "triple-equals": [
       true,
       "allow-undefined-check"
-    ],
-    "typedef-whitespace": [
-      true,
-      {
-        "call-signature": "nospace",
-        "index-signature": "nospace",
-        "parameter": "nospace",
-        "property-declaration": "nospace",
-        "variable-declaration": "nospace"
-      },
-      {
-        "call-signature": "space",
-        "index-signature": "space",
-        "parameter": "space",
-        "property-declaration": "space",
-        "variable-declaration": "space"
-      }
     ],
     "use-isnan": true,
     "variable-name": [
@@ -129,14 +64,6 @@
       "allow-leading-underscore",
       "ban-keywords",
       "check-format"
-    ],
-    "whitespace": [
-      true,
-      "check-branch",
-      "check-decl",
-      "check-operator",
-      "check-separator",
-      "check-type"
     ]
   }
 }
