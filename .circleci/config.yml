@@ -20,11 +20,17 @@ jobs:
       - run:
           name: build
           command: yarn build
-
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - node_modules
+            - lib
   test:
     docker:
       - image: circleci/node:10.16.3
     steps:
+      - attach_workspace:
+          at: ./
       - run:
           name: test
           command: yarn test
@@ -33,6 +39,8 @@ jobs:
     docker:
       - image: circleci/node:10.16.3
     steps:
+      - attach_workspace:
+          at: ./
       - run:
           name: lint
           command: yarn lint
