@@ -23,7 +23,7 @@ import { TypedReducer } from "../TypedReducer";
 
 export class TypedReducerBuilderImpl<S> implements TypedReducer.Builder<S> {
   private typedHandlers: {[type: string]: Reducer<S>} = {};
-  private defaultHandler: Reducer<S>;
+  private defaultHandler: Reducer<S> | undefined;
 
   withHandler<T>(
     type: TypedActionString<T>,
@@ -47,7 +47,7 @@ export class TypedReducerBuilderImpl<S> implements TypedReducer.Builder<S> {
       }
     }
 
-    this.typedHandlers[type as string] = handler;
+    this.typedHandlers[type as string] = handler as Reducer<S>;
     return this;
   }
 
