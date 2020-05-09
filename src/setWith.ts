@@ -44,8 +44,8 @@ import { shallowEqualsPartial } from "./internal/utils/shallowEqualsPartial";
  */
 export function setWith<S, K extends keyof S>(
   state: S,
-  override: (Pick<S, K> | S),
-  ...addlOverrides: (Pick<S, K> | S)[],
+  override: Pick<S, K> | S,
+  ...addlOverrides: (Pick<S, K> | S)[] // tslint:disable-line:trailing-comma
 ): S;
 
 /**
@@ -75,7 +75,7 @@ export function setWith<S, K extends keyof S>(
 export function setWith<S extends Record<string, any>>(
   state: S,
   override: S,
-  ...addlOverrides: S[],
+  ...addlOverrides: S[] // tslint:disable-line:trailing-comma
 ): S;
 
 export function setWith(state: any, ...overrides: any[]) {
@@ -83,10 +83,18 @@ export function setWith(state: any, ...overrides: any[]) {
     if (shallowEqualsPartial(state, overrides[0])) {
       return state;
     } else {
-      return __assign(Object.create(Object.getPrototypeOf(state)), state, overrides[0]);
+      return __assign(
+        Object.create(Object.getPrototypeOf(state)),
+        state,
+        overrides[0],
+      );
     }
   } else {
-    const result = __assign(Object.create(Object.getPrototypeOf(state)), state, ...overrides);
+    const result = __assign(
+      Object.create(Object.getPrototypeOf(state)),
+      state,
+      ...overrides,
+    );
     return shallowEqualsPartial(state, result) ? state : result;
   }
 }
