@@ -52,7 +52,6 @@
       true,
       "double"
     ],
-    "semicolon": [true, "always"],
     "switch-default": true,
     "triple-equals": [
       true,
