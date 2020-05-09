@@ -2,10 +2,7 @@
   "compilerOptions": {
     "declaration": true,
     "importHelpers": true,
-    "lib": [
-      "dom",
-      "es5"
-    ],
+    "lib": ["dom", "es2015"],
     "module": "commonjs",
     "moduleResolution": "node",
     "noImplicitAny": true,
@@ -15,9 +12,5 @@
     "strict": true,
     "target": "es5"
   },
-  "exclude": [
-    "_book",
-    "node_modules",
-    "lib"
-  ]
+  "exclude": ["_book", "node_modules", "lib"]
 }

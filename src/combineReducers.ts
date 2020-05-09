@@ -22,28 +22,31 @@ import { ReducerMap } from "./ReducerMap";
 
 const hasOwnProperty = Object.prototype.hasOwnProperty;
 
-function reduce<S>(state: S, action: Action, reducerMap: ReducerMap<S>) {
+function reduce<S>(
+  state: S,
+  action: Action,
+  reducerMap: ReducerMap<S>,
+  reducerKeys: (keyof S)[],
+) {
   let newState: S | undefined = undefined;
 
-  for (const key in reducerMap) {
-    if (!hasOwnProperty.call(reducerMap, key)) {
-      continue;
-    }
-
+  for (let i = 0; i < reducerKeys.length; i++) {
+    const key = reducerKeys[i];
     const statePart = state[key];
     const newStatePart = reducerMap[key](statePart, action);
     if (newStatePart !== statePart) {
       if (!newState) {
-        newState = __assign(Object.create(Object.getPrototypeOf(state)), state) as S;
+        newState = __assign(
+          Object.create(Object.getPrototypeOf(state)),
+          state,
+        ) as S;
       }
 
       newState[key] = newStatePart;
     }
   }
 
-  return newState !== undefined
-      ? newState
-      : state;
+  return newState !== undefined ? newState : state;
 }
 
 function verifySameShape<S>(state: S, reducerMap: ReducerMap<S>) {
@@ -52,7 +55,9 @@ function verifySameShape<S>(state: S, reducerMap: ReducerMap<S>) {
       hasOwnProperty.call(state, key) &&
       !hasOwnProperty.call(reducerMap, key)
     ) {
-      throw new Error(`mismatched shapes in combineReducers(): reducers missing '${key}'`);
+      throw new Error(
+        `mismatched shapes in combineReducers(): reducers missing '${key}'`,
+      );
     }
   }
 
@@ -61,7 +66,9 @@ function verifySameShape<S>(state: S, reducerMap: ReducerMap<S>) {
       hasOwnProperty.call(reducerMap, key) &&
       !hasOwnProperty.call(state, key)
     ) {
-      throw new Error(`mismatched shapes in combineReducers(): state missing '${key}'`);
+      throw new Error(
+        `mismatched shapes in combineReducers(): state missing '${key}'`,
+      );
     }
   }
 }
@@ -86,17 +93,17 @@ function verifySameShape<S>(state: S, reducerMap: ReducerMap<S>) {
  */
 export function combineReducers<S>(reducerMap: ReducerMap<S>): Reducer<S> {
   let hasVerifiedShape = false;
+  const reducerKeys = Object.keys(reducerMap) as (keyof S)[];
+
   return (state: S, action: Action) => {
     if (
       typeof process === "undefined" ||
       process.env.NODE_ENV !== "production"
     ) {
-      if (
-        state === undefined ||
-        state === null ||
-        typeof state !== "object"
-      ) {
-        throw new Error("combineReducers() requires object state; received " + state);
+      if (state === undefined || state === null || typeof state !== "object") {
+        throw new Error(
+          "combineReducers() requires object state; received " + state,
+        );
       }
 
       if (!hasVerifiedShape) {
@@ -105,6 +112,6 @@ export function combineReducers<S>(reducerMap: ReducerMap<S>): Reducer<S> {
       }
     }
 
-    return reduce(state, action, reducerMap);
+    return reduce(state, action, reducerMap, reducerKeys);
   };
 }
