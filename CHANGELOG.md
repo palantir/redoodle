@@ -1,14 +1,14 @@
 ## 2.5.0
 
-- **NOTICE**: TypeScript >= 3.0 required to use Redoodle starting with 2.5.0
-- Add `defineAction()`, a faster alternative to `TypedAction.define()`
-- Add `isType()` helper for usage with definitions returned from `defineAction()`
-- Speed up internal code paths by using plain for loops instead of `for in` or `for of`
-- Remove internal usages of `delete`
-- Greatly simplify logging middleware, which should improve performance in development and improve download times for end application bundles that don't tree-shake
-- Simplify prototype handling
-- [internal] Update to Circle 2
-- [internal] Use Prettier for code formatting
+- **NOTICE**: TypeScript >= 3.0 required to use Redoodle starting with 2.5.0 ([#33](https://github.com/palantir/redoodle/pull/33))
+- Add `defineAction()`, a faster alternative to `TypedAction.define()` ([#36](https://github.com/palantir/redoodle/pull/36))
+- Add `isType()` helper for usage with definitions returned from `defineAction()` ([#36](https://github.com/palantir/redoodle/pull/36))
+- Speed up internal code paths by using plain for loops instead of `for in` or `for of` ([#39](https://github.com/palantir/redoodle/pull/39))
+- Remove internal usages of `delete` ([#39](https://github.com/palantir/redoodle/pull/39))
+- Greatly simplify logging middleware, which should improve performance in development and improve download times for end application bundles that don't tree-shake ([#40](https://github.com/palantir/redoodle/pull/40)]
+- Simplify prototype handling ([#42](https://github.com/palantir/redoodle/pull/42))
+- [internal] Update to Circle 2 ([#31](https://github.com/palantir/redoodle/pull/31))
+- [internal] Use Prettier for code formatting ([#41](https://github.com/palantir/redoodle/pull/41))
 
 ## 2.4.0
 
