@@ -123,8 +123,6 @@ export namespace TypedAction {
    *
    * All Definitions for a Redux-enabled application MUST have unique strings.
    *
-   * @param options.validatePayload
-   *
    * @deprecated
    */
   export function define<E extends string>(
