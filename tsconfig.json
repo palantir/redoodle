@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "importHelpers": true,
+    "lib": ["dom", "es2015"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
+    "outDir": "lib",
+    "strict": true,
+    "target": "es5"
+  },
+  "exclude": ["_book", "node_modules", "lib"]
+}

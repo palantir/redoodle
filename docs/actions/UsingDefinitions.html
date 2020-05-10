@@ -1,0 +1,611 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Creating Actions · Redoodle</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../../build/gitbook.css">
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="UsingTypedReducer.html" />
+    
+    
+    <link rel="prev" href="./" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Typed Actions
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.2.1" data-path="UsingDefinitions.html">
+            
+                <a href="UsingDefinitions.html">
+            
+                    
+                    Creating Actions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="UsingTypedReducer.html">
+            
+                <a href="UsingTypedReducer.html">
+            
+                    
+                    Reducing Actions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../compound/">
+            
+                <a href="../compound/">
+            
+                    
+                    Compound Actions
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../compound/">
+            
+                <a href="../compound/">
+            
+                    
+                    Usage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../compound/Benefits.html">
+            
+                <a href="../compound/Benefits.html">
+            
+                    
+                    Benefits
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../compound/ConfiguringStore.html">
+            
+                <a href="../compound/ConfiguringStore.html">
+            
+                    
+                    Configuring the Store
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../InitialState.html">
+            
+                <a href="../InitialState.html">
+            
+                    
+                    Initial State Management
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../utilities/">
+            
+                <a href="../utilities/">
+            
+                    
+                    Utilities
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../utilities/combineReducers.html">
+            
+                <a href="../utilities/combineReducers.html">
+            
+                    
+                    combineReducers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../utilities/composeReducers.html">
+            
+                <a href="../utilities/composeReducers.html">
+            
+                    
+                    composeReducers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../utilities/compoundActionsEnhancer.html">
+            
+                <a href="../utilities/compoundActionsEnhancer.html">
+            
+                    
+                    compoundActionsEnhancer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../utilities/createStore.html">
+            
+                <a href="../utilities/createStore.html">
+            
+                    
+                    createStore
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../utilities/isType.html">
+            
+                <a href="../utilities/isType.html">
+            
+                    
+                    isType
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../utilities/loggingMiddleware.html">
+            
+                <a href="../utilities/loggingMiddleware.html">
+            
+                    
+                    loggingMiddleware
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="../utilities/omit.html">
+            
+                <a href="../utilities/omit.html">
+            
+                    
+                    omit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="../utilities/reduceCompoundActions.html">
+            
+                <a href="../utilities/reduceCompoundActions.html">
+            
+                    
+                    reduceCompoundActions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="../utilities/setWith.html">
+            
+                <a href="../utilities/setWith.html">
+            
+                    
+                    setWith
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../FAQ.html">
+            
+                <a href="../FAQ.html">
+            
+                    
+                    FAQ
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../../CHANGELOG.html">
+            
+                <a href="../../CHANGELOG.html">
+            
+                    
+                    Change Log
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Creating Actions</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="using-typedactiondefinitions">Using TypedActionDefinitions</h1>
+<h2 id="part-1-creating-a-definition">Part 1: Creating a Definition</h2>
+<p>The first step to integrating TypedActions into your Redux application is
+to create a Definition, which marries a unique Action type string
+(like <code>&quot;AddMessage&quot;</code>) to the associated payload
+(like <code>{ message: string, author: string }</code>).</p>
+<blockquote>
+<p><strong>Note</strong>: The syntax for <code>defineAction</code> is just a little awkward, with the double sets of <code>()</code>.
+There is a good reason for the syntax choice, so just be careful not to forget all the pieces!
+Written in one line, the correct syntax is <code>defineAction(&quot;Foo&quot;)<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>FooPayload</span><span class="token punctuation">&gt;</span></span>()</code>.</p>
+</blockquote>
+<p>The utility function <a href="../utilities/isType.html">isType</a>
+shows how to use a Definition as a type guard to detect Actions that match it.</p>
+<h4 id="example">Example</h4>
+<pre class="language-"><code class="lang-ts"><span class="token comment">// actions.ts</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> defineAction <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;redoodle&quot;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> AddMessage <span class="token operator">=</span> <span class="token function">defineAction</span><span class="token punctuation">(</span><span class="token string">&quot;AddMessage&quot;</span><span class="token punctuation">)</span><span class="token operator">&lt;</span><span class="token punctuation">{</span>
+  message<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  author<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// ... all the other action definitions used by your app</span>
+</code></pre>
+<h4 id="typescript-signature">TypeScript signature</h4>
+<pre class="language-"><code class="lang-ts"><span class="token keyword">function</span> defineAction<span class="token operator">&lt;</span><span class="token constant">E</span> <span class="token keyword">extends</span> <span class="token class-name">string</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token keyword">type</span><span class="token operator">:</span> <span class="token constant">E</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token operator">&lt;</span><span class="token constant">T</span> <span class="token operator">=</span> <span class="token keyword">undefined</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> TypedActionDefinition2<span class="token operator">&lt;</span><span class="token constant">E</span><span class="token punctuation">,</span> <span class="token constant">T</span><span class="token operator">&gt;</span><span class="token punctuation">;</span>
+</code></pre>
+<h2 id="part-2-using-your-definitions">Part 2: Using Your Definitions</h2>
+<p>The most important thing a Definition does is to be a factory to stamp
+instances of Actions that conform to the Definition.</p>
+<p>A Definition is a callable function which, given a payload,
+will create an Action object ready to dispatch.
+The Definition itself is typesafe, which means that a payload
+that has incorrect, has extra, or is missing keys will raise compile-time errors.</p>
+<p>The created Action is a plain old Redux Action that&apos;s ready to go straight
+to a Store&apos;s <code>dispatch()</code>.
+While this could be the end of the story for Redoodle, Redoodle also provides
+powerful utilities for reducing Actions based on Definitions.
+The following section <a href="UsingTypedReducer.html">Reducing Actions</a> walks through
+how to use the TypedReducer utility to create a Redux Reducer that leverages
+the power of typed Action Definitions.</p>
+<h4 id="example">Example</h4>
+<pre class="language-"><code class="lang-ts"><span class="token keyword">import</span> <span class="token punctuation">{</span> AddMessage <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;./actions&quot;</span><span class="token punctuation">;</span>
+
+<span class="token comment">// assuming AddMessage is created using defineAction(), as in the above section:</span>
+<span class="token comment">//</span>
+<span class="token comment">// const AddMessage = defineAction(&quot;AddMessage&quot;)&lt;{</span>
+<span class="token comment">//   message: string;</span>
+<span class="token comment">//   author: string;</span>
+<span class="token comment">// }&gt;();</span>
+<span class="token comment">//</span>
+
+store<span class="token punctuation">.</span><span class="token function">dispatch</span><span class="token punctuation">(</span>
+  <span class="token function">AddMessage</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    message<span class="token operator">:</span> <span class="token string">&quot;Hello Redoodle&quot;</span><span class="token punctuation">,</span>
+    author<span class="token operator">:</span> <span class="token string">&quot;crazytoucan&quot;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// The code above dispatches the following action to your store:</span>
+<span class="token comment">//</span>
+<span class="token comment">//   {</span>
+<span class="token comment">//     type: &quot;AddMessage&quot;,</span>
+<span class="token comment">//     payload: {</span>
+<span class="token comment">//       message: &quot;Hello Redoodle&quot;,</span>
+<span class="token comment">//       author: &quot;crazytoucan&quot;</span>
+<span class="token comment">//     }</span>
+<span class="token comment">//   }</span>
+<span class="token comment">//</span>
+<span class="token comment">// Most importantly, all of the fields of the generated `action` are type-aware at compile time.</span>
+<span class="token comment">// Using ~&gt; to denote TypeScript type inferencing:</span>
+<span class="token comment">//</span>
+<span class="token comment">//    action.type ~&gt; &quot;AddMessage&quot;    (the specific string literal)</span>
+<span class="token comment">//    action.payload ~&gt; { message: string, author: string }</span>
+<span class="token comment">//    action.payload.message ~&gt; string</span>
+<span class="token comment">//    action.payload.whoops ~&gt; Error [ts] Property &apos;whoops&apos; does not exist</span>
+</code></pre>
+<h4 id="typescript-signature">TypeScript signature</h4>
+<pre class="language-"><code class="lang-ts"><span class="token keyword">type</span> TypedActionDefinition2<span class="token operator">&lt;</span><span class="token constant">E</span> <span class="token keyword">extends</span> <span class="token class-name">string</span><span class="token punctuation">,</span> <span class="token constant">T</span><span class="token operator">&gt;</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token operator">&lt;</span><span class="token constant">M</span><span class="token operator">&gt;</span><span class="token punctuation">(</span>payload<span class="token operator">:</span> <span class="token constant">T</span><span class="token punctuation">,</span> meta<span class="token operator">?</span><span class="token operator">:</span> <span class="token constant">M</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token keyword">type</span><span class="token operator">:</span> <span class="token constant">E</span><span class="token punctuation">;</span>
+        payload<span class="token operator">:</span> <span class="token constant">T</span><span class="token punctuation">;</span>
+        meta<span class="token operator">:</span> <span class="token constant">M</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+    <span class="token constant">TYPE</span><span class="token operator">:</span> TypedActionString<span class="token operator">&lt;</span><span class="token constant">T</span><span class="token punctuation">,</span> <span class="token constant">E</span><span class="token operator">&gt;</span><span class="token punctuation">;</span>
+    __PAYLOAD<span class="token operator">:</span> <span class="token constant">T</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token operator">&amp;</span> <span class="token punctuation">(</span><span class="token constant">T</span> <span class="token keyword">extends</span> <span class="token class-name">undefined</span> <span class="token operator">?</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token keyword">type</span><span class="token operator">:</span> <span class="token constant">E</span><span class="token punctuation">;</span>
+        payload<span class="token operator">:</span> <span class="token keyword">undefined</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: Typed Actions">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="UsingTypedReducer.html" class="navigation navigation-next " aria-label="Next page: Reducing Actions">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Creating Actions","level":"1.2.1","depth":2,"next":{"title":"Reducing Actions","level":"1.2.2","depth":2,"path":"docs/actions/UsingTypedReducer.md","ref":"docs/actions/UsingTypedReducer.md","articles":[]},"previous":{"title":"Typed Actions","level":"1.2","depth":1,"path":"docs/actions/README.md","ref":"docs/actions/README.md","articles":[{"title":"Creating Actions","level":"1.2.1","depth":2,"path":"docs/actions/UsingDefinitions.md","ref":"docs/actions/UsingDefinitions.md","articles":[]},{"title":"Reducing Actions","level":"1.2.2","depth":2,"path":"docs/actions/UsingTypedReducer.md","ref":"docs/actions/UsingTypedReducer.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["edit-link","prism","-highlight","github"],"styles":{"website":"build/gitbook.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"edit-link":{"label":"Edit This Page","base":"https://github.com/palantir/redoodle/tree/master"},"github":{"url":"https://github.com/palantir/redoodle/"},"prism":{"lang":{"ts":"typescript"}},"theme-default":{"styles":{"website":"build/gitbook.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Redoodle","gitbook":"3.2.2"},"file":{"path":"docs/actions/UsingDefinitions.md","mtime":"2020-05-09T23:05:11.177Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2020-05-10T00:00:52.054Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

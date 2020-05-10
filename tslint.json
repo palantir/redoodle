@@ -1,0 +1,69 @@
+{
+  "rulesDirectory": [
+    "node_modules/tslint-eslint-rules/dist/rules"
+  ],
+  "rules": {
+    "class-name": true,
+    "comment-format": [
+      true,
+      "check-space"
+    ],
+    "curly": true,
+    "interface-name": [
+      true,
+      "never-prefix"
+    ],
+    "jsdoc-format": true,
+    "label-position": true,
+    "new-parens": true,
+    "no-angle-bracket-type-assertion": true,
+    "no-arg": true,
+    "no-bitwise": true,
+    "no-conditional-assignment": true,
+    "no-console": true,
+    "no-construct": true,
+    "no-debugger": true,
+    "no-duplicate-variable": true,
+    "no-empty": true,
+    "no-eval": true,
+    "no-internal-module": true,
+    "no-invalid-this": [
+      true,
+      "check-function-in-method"
+    ],
+    "no-reference": true,
+    "no-shadowed-variable": true,
+    "no-string-literal": true,
+    "no-string-throw": true,
+    "no-switch-case-fall-through": true,
+    "no-trailing-whitespace": true,
+    "no-var-keyword": true,
+    "no-var-requires": true,
+    "one-line": [
+      true,
+      "check-open-brace",
+      "check-catch",
+      "check-else",
+      "check-finally",
+      "check-whitespace"
+    ],
+    "prefer-const": true,
+    "quotemark": [
+      true,
+      "double"
+    ],
+    "switch-default": true,
+    "triple-equals": [
+      true,
+      "allow-undefined-check"
+    ],
+    "use-isnan": true,
+    "variable-name": [
+      true,
+      "allow-pascal-case",
+      "allow-leading-underscore",
+      "ban-keywords",
+      "check-format"
+    ]
+  }
+}

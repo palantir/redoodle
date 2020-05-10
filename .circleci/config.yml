@@ -1,0 +1,74 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:10.16.3
+    steps:
+      - checkout
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install Dependencies
+          command: yarn install --frozen-lockfile
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+      - run:
+          name: build
+          command: yarn build
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - node_modules
+            - lib
+  test:
+    docker:
+      - image: circleci/node:10.16.3
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ./
+      - run:
+          name: test
+          command: yarn test
+
+  lint:
+    docker:
+      - image: circleci/node:10.16.3
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ./
+      - run:
+          name: lint
+          command: yarn lint
+
+  prettier:
+    docker:
+      - image: circleci/node:10.16.3
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ./
+      - run:
+          name: prettier
+          command: ./node_modules/.bin/prettier --check src/**/*
+
+workflows:
+  version: 2
+  check:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
+      - lint:
+          requires:
+            - build
+      - prettier:
+          requires:
+            - build
