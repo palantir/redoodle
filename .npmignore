@@ -3,6 +3,7 @@
 /_book/
 /node_modules/
 /lib/__tests__/
+/lib-esnext/__tests__/
 /src/
 .editorconfig
 .gitignore

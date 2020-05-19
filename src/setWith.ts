@@ -15,7 +15,6 @@
  * limitations under the License.
  */
 
-import { __assign } from "tslib";
 import { shallowEqualsPartial } from "./internal/utils/shallowEqualsPartial";
 
 /**
@@ -83,10 +82,10 @@ export function setWith(state: any, ...overrides: any[]) {
     if (shallowEqualsPartial(state, overrides[0])) {
       return state;
     } else {
-      return __assign({}, state, overrides[0]);
+      return { ...state, ...overrides[0] };
     }
   } else {
-    const result = __assign({}, state, ...overrides);
+    const result = Object.assign({}, state, ...overrides);
     return shallowEqualsPartial(state, result) ? state : result;
   }
 }

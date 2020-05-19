@@ -15,7 +15,6 @@
  * limitations under the License.
  */
 
-import { __assign } from "tslib";
 import { setWith } from "../index";
 
 interface A {

@@ -15,8 +15,6 @@
  * limitations under the License.
  */
 
-import { __assign } from "tslib";
-
 const hasOwnProperty = Object.prototype.hasOwnProperty;
 
 function hasAny(state: any, keys: string[]): boolean {

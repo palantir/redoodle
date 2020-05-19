@@ -2,15 +2,15 @@
   "compilerOptions": {
     "declaration": true,
     "importHelpers": true,
-    "lib": ["dom", "es2015"],
-    "module": "commonjs",
+    "lib": ["dom", "esnext"],
+    "module": "ESNext",
     "moduleResolution": "node",
     "noImplicitAny": true,
     "noUnusedParameters": true,
     "noUnusedLocals": true,
-    "outDir": "lib",
+    "outDir": "lib-esnext",
     "strict": true,
-    "target": "es5"
+    "target": "esnext"
   },
   "exclude": ["_book", "node_modules", "lib", "lib-esnext"]
 }

@@ -25,6 +25,7 @@ jobs:
           paths:
             - node_modules
             - lib
+            - lib-esnext
   test:
     docker:
       - image: circleci/node:10.16.3
