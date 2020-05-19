@@ -10,7 +10,7 @@
     "lint": "find src -type f | xargs tslint -c tslint.json",
     "prepare": "yarn clean && yarn build",
     "test": "jest",
-    "build": "yarn build-es5 && yarn build-esnext",
+    "build": "yarn build-es5 && yarn build-esm",
     "build-es5": "tsc -p tsconfig.json",
     "build-esm": "tsc -p tsconfig-esm.json",
     "clean": "rm -rf lib/ lib-esm/",
