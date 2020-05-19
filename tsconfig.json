@@ -12,5 +12,5 @@
     "strict": true,
     "target": "es5"
   },
-  "exclude": ["_book", "node_modules", "lib", "lib-esnext"]
+  "exclude": ["_book", "node_modules", "lib", "lib-esm"]
 }

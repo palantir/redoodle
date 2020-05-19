@@ -3,4 +3,4 @@
 /_book/
 /node_modules/
 /lib/
-/lib-esnext/
+/lib-esm/
