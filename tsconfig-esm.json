@@ -3,14 +3,14 @@
     "declaration": true,
     "importHelpers": true,
     "lib": ["dom", "es2015"],
-    "module": "commonjs",
+    "module": "ES2015",
     "moduleResolution": "node",
     "noImplicitAny": true,
     "noUnusedParameters": true,
     "noUnusedLocals": true,
-    "outDir": "lib",
+    "outDir": "lib-esm",
     "strict": true,
-    "target": "es5"
+    "target": "ES2015"
   },
   "exclude": ["_book", "node_modules", "lib", "lib-esm"]
 }

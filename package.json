@@ -2,20 +2,23 @@
   "name": "redoodle",
   "version": "2.5.0",
   "description": "An addon library for Redux that enhances its integration with TypeScript.",
+  "module": "esm/index.js",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "sideEffects": false,
   "scripts": {
     "lint": "find src -type f | xargs tslint -c tslint.json",
-    "prepare": "yarn run clean && yarn run build",
+    "prepare": "yarn clean && yarn build",
     "test": "jest",
-    "build": "yarn run clean && tsc",
-    "clean": "rm -rf lib/",
+    "build": "yarn build-es5 && yarn build-esm",
+    "build-es5": "tsc -p tsconfig.json",
+    "build-esm": "tsc -p tsconfig-esm.json",
+    "clean": "rm -rf lib/ lib-esm/",
     "docs:clean": "rm -rf _book/",
     "docs:prepare": "gitbook install",
-    "docs:build": "yarn run docs:prepare && gitbook build -g palantir/redoodle",
-    "docs:watch": "yarn run docs:prepare && gitbook serve -g palantir/redoodle",
-    "docs:publish": "yarn run docs:clean && yarn run docs:build && cd _book && git init && git commit --allow-empty -m 'update book' && git checkout -b gh-pages && touch .nojekyll && git add . && git commit -am 'update book' && git push git@github.com:palantir/redoodle gh-pages --force"
+    "docs:build": "yarn docs:prepare && gitbook build -g palantir/redoodle",
+    "docs:watch": "yarn docs:prepare && gitbook serve -g palantir/redoodle",
+    "docs:publish": "yarn docs:clean && yarn docs:build && cd _book && git init && git commit --allow-empty -m 'update book' && git checkout -b gh-pages && touch .nojekyll && git add . && git commit -am 'update book' && git push git@github.com:palantir/redoodle gh-pages --force"
   },
   "dependencies": {
     "tslib": "^1.8.1"
