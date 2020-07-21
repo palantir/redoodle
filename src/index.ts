@@ -25,6 +25,7 @@ export { Store } from "./Store";
 export { StoreCreator } from "./StoreCreator";
 export { StoreEnhancer } from "./StoreEnhancer";
 export { TypedAction } from "./TypedAction";
+export { TypedActionDefinition2 } from "./TypedActionDefinition2";
 export { TypedActionString } from "./TypedActionString";
 export { TypedReducer } from "./TypedReducer";
 export { combineReducers } from "./combineReducers";
