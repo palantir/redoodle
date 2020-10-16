@@ -18,9 +18,9 @@
 import { Action } from "../Action";
 import { Reducer } from "../Reducer";
 import { TypedAction } from "../TypedAction";
+import { TypedActionDefinition2 } from "../TypedActionDefinition2";
 import { TypedActionString } from "../TypedActionString";
 import { TypedReducer } from "../TypedReducer";
-import { TypedActionDefinition2 } from "../TypedActionDefinition2";
 
 export class TypedReducerBuilderImpl<S> implements TypedReducer.Builder<S> {
   private typedHandlers: { [type: string]: Reducer<S> } = {};

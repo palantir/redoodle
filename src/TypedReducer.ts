@@ -18,9 +18,9 @@
 import { Action } from "./Action";
 import { Reducer } from "./Reducer";
 import { TypedAction } from "./TypedAction";
+import { TypedActionDefinition2 } from "./TypedActionDefinition2";
 import { TypedActionString } from "./TypedActionString";
 import { TypedReducerBuilderImpl } from "./internal/TypedReducerBuilderImpl";
-import { TypedActionDefinition2 } from "./TypedActionDefinition2";
 
 /**
  * Important utility to help build Redux Reducer functions
