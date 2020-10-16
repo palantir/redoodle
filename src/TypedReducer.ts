@@ -69,7 +69,7 @@ export namespace TypedReducer {
     ): this;
 
     /**
-     * Alias for withHandler that takes the whole action definition rather than just the typ string.
+     * Alias for withHandler that takes the whole action definition rather than just the type string.
      */
     withDefinitionHandler<T, E extends string>(
       type:
