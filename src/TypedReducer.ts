@@ -72,7 +72,7 @@ export namespace TypedReducer {
      * Alias for withHandler that takes the whole action definition rather than just the typ string.
      */
     withDefinitionHandler<T, E extends string>(
-      type: TypedActionDefinition2<E, T> | TypedAction.Definition<E, T>,
+      type: TypedActionDefinition2<E, T> | TypedAction.Definition<E, T> | TypedAction.NoPayloadDefinition<E>,
       handler: (state: S, payload: T, meta: any | undefined) => S,
     ): this;
 

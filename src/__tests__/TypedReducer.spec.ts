@@ -26,6 +26,7 @@ describe("TypedReducer", () => {
   const Log = TypedAction.define("test::log")<string[]>();
   const Count = TypedAction.define("test::count")<number>();
   const Reset = TypedAction.define("test::reset")<number>();
+  const One = TypedAction.defineWithoutPayload("test::one")();
 
   it("should return a reducer function", () => {
     const reducer = TypedReducer.builder().build();
@@ -58,16 +59,6 @@ describe("TypedReducer", () => {
   it("should allow specifying payload-only handlers", () => {
     const reducer = TypedReducer.builder<CountState>()
       .withHandler(Count.TYPE, (state, toAdd) => ({
-        total: state.total + toAdd,
-      }))
-      .build();
-
-    expect(reducer({ total: 5 }, Count.create(3))).toEqual({ total: 8 });
-  });
-
-  it("should allow specifying definition payload-only handlers", () => {
-    const reducer = TypedReducer.builder<CountState>()
-      .withDefinitionHandler(Count, (state, toAdd) => ({
         total: state.total + toAdd,
       }))
       .build();
@@ -116,5 +107,25 @@ describe("TypedReducer", () => {
     expect(reducer({ total: 8 }, Log.create(["foobar", "world"]))).toEqual({
       total: 19,
     });
+  });
+
+  it("should allow specifying definition payload-only handlers", () => {
+    const reducer = TypedReducer.builder<CountState>()
+      .withDefinitionHandler(Count, (state, toAdd) => ({
+        total: state.total + toAdd,
+      }))
+      .build();
+
+    expect(reducer({ total: 5 }, Count.create(3))).toEqual({ total: 8 });
+  });
+
+  it("should allow specifying definition without payload", () => {
+    const reducer = TypedReducer.builder<CountState>()
+      .withDefinitionHandler(One, () => ({
+        total: 1,
+      }))
+      .build();
+
+    expect(reducer({ total: 10 }, One.create())).toEqual({ total: 1 });
   });
 });
