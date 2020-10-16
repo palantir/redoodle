@@ -36,11 +36,14 @@ export class TypedReducerBuilderImpl<S> implements TypedReducer.Builder<S> {
   }
 
   withDefinitionHandler<T, E extends string = string>(
-    type: TypedActionDefinition2<E, T> | TypedAction.Definition<E, T> | TypedAction.NoPayloadDefinition<E>,
+    type:
+      | TypedActionDefinition2<E, T>
+      | TypedAction.Definition<E, T>
+      | TypedAction.NoPayloadDefinition<E>,
     handler: (state: S, payload: T, meta: any | undefined) => S,
-    ): this {
-      return this.withHandler(type.TYPE, handler);
-    }
+  ): this {
+    return this.withHandler(type.TYPE, handler);
+  }
 
   withActionHandler<T, E extends string = string>(
     type: TypedActionString<T, E>,
