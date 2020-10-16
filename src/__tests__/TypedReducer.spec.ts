@@ -65,6 +65,16 @@ describe("TypedReducer", () => {
     expect(reducer({ total: 5 }, Count.create(3))).toEqual({ total: 8 });
   });
 
+  it("should allow specifying definition payload-only handlers", () => {
+    const reducer = TypedReducer.builder<CountState>()
+      .withDefinitionHandler(Count, (state, toAdd) => ({
+        total: state.total + toAdd,
+      }))
+      .build();
+
+    expect(reducer({ total: 5 }, Count.create(3))).toEqual({ total: 8 });
+  });
+
   it("should only invoke handlers for existing actions", () => {
     const reducer = TypedReducer.builder<CountState>()
       .withActionHandler(

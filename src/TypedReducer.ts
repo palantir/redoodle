@@ -20,6 +20,7 @@ import { Reducer } from "./Reducer";
 import { TypedAction } from "./TypedAction";
 import { TypedActionString } from "./TypedActionString";
 import { TypedReducerBuilderImpl } from "./internal/TypedReducerBuilderImpl";
+import { TypedActionDefinition2 } from "./TypedActionDefinition2";
 
 /**
  * Important utility to help build Redux Reducer functions
@@ -64,6 +65,14 @@ export namespace TypedReducer {
      */
     withHandler<T>(
       type: TypedActionString<T>,
+      handler: (state: S, payload: T, meta: any | undefined) => S,
+    ): this;
+
+    /**
+     * Alias for withHandler that takes the whole action definition rather than just the typ string.
+     */
+    withDefinitionHandler<T, E extends string>(
+      type: TypedActionDefinition2<E, T> | TypedAction.Definition<E, T>,
       handler: (state: S, payload: T, meta: any | undefined) => S,
     ): this;
 
