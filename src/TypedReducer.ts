@@ -18,6 +18,7 @@
 import { Action } from "./Action";
 import { Reducer } from "./Reducer";
 import { TypedAction } from "./TypedAction";
+import { TypedActionDefinition2 } from "./TypedActionDefinition2";
 import { TypedActionString } from "./TypedActionString";
 import { TypedReducerBuilderImpl } from "./internal/TypedReducerBuilderImpl";
 
@@ -64,6 +65,17 @@ export namespace TypedReducer {
      */
     withHandler<T>(
       type: TypedActionString<T>,
+      handler: (state: S, payload: T, meta: any | undefined) => S,
+    ): this;
+
+    /**
+     * Alias for withHandler that takes the whole action definition rather than just the type string.
+     */
+    withDefinitionHandler<T, E extends string>(
+      type:
+        | TypedActionDefinition2<E, T>
+        | TypedAction.Definition<E, T>
+        | TypedAction.NoPayloadDefinition<E>,
       handler: (state: S, payload: T, meta: any | undefined) => S,
     ): this;
 

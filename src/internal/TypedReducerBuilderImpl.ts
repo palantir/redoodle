@@ -18,6 +18,7 @@
 import { Action } from "../Action";
 import { Reducer } from "../Reducer";
 import { TypedAction } from "../TypedAction";
+import { TypedActionDefinition2 } from "../TypedActionDefinition2";
 import { TypedActionString } from "../TypedActionString";
 import { TypedReducer } from "../TypedReducer";
 
@@ -32,6 +33,16 @@ export class TypedReducerBuilderImpl<S> implements TypedReducer.Builder<S> {
     return this.withActionHandler(type, (state, action) => {
       return handler(state, action.payload, action.meta);
     });
+  }
+
+  withDefinitionHandler<T, E extends string = string>(
+    type:
+      | TypedActionDefinition2<E, T>
+      | TypedAction.Definition<E, T>
+      | TypedAction.NoPayloadDefinition<E>,
+    handler: (state: S, payload: T, meta: any | undefined) => S,
+  ): this {
+    return this.withHandler(type.TYPE, handler);
   }
 
   withActionHandler<T, E extends string = string>(
