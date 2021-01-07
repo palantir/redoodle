@@ -46,7 +46,7 @@ export function defineAction<E extends string>(type: E) {
       payload: T,
       meta: any,
     ) {
-      return arguments.length === 3
+      return arguments.length === 2
         ? { type, payload, meta }
         : { type, payload };
     } as any;
