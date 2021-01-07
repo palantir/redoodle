@@ -30,10 +30,10 @@ describe("defineAction", () => {
 
   it("should correctly set `meta` when passing second argument", () => {
     const Reset = defineAction("Reset")();
-    expect(
-      Reset(undefined, {
-        meta: "meta",
-      }),
-    ).toEqual({ type: "Reset", payload: undefined, meta: "meta" });
+    expect(Reset(undefined, "meta")).toEqual({
+      type: "Reset",
+      payload: undefined,
+      meta: "meta",
+    });
   });
 });
