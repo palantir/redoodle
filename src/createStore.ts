@@ -16,10 +16,11 @@
  */
 
 import { Action } from "./Action";
+import { isPlainObject } from "./internal/utils/isPlainObject";
 import { Reducer } from "./Reducer";
 import { Store } from "./Store";
 import { StoreEnhancer } from "./StoreEnhancer";
-import { isPlainObject } from "./internal/utils/isPlainObject";
+import { _ObservableLike } from "./_observableCompat";
 
 interface Listener {
   (): void;
@@ -60,7 +61,7 @@ export function createStore<S>(
     return currentState;
   }
 
-  function subscribe(listener: Listener) {
+  function outerSubscribe(listener: Listener) {
     let isSubscribed = true;
 
     ensureCanMutateNextListeners();
@@ -110,10 +111,28 @@ export function createStore<S>(
     currentReducer = nextReducer;
   }
 
+  const observable: _ObservableLike<S> = {
+    subscribe(observer) {
+      const unsubscribe = outerSubscribe(() => {
+        observer.next?.(currentState);
+      });
+
+      return {
+        unsubscribe,
+      };
+    },
+    [Symbol.observable]() {
+      return observable;
+    }
+  };
+
   return {
     dispatch,
-    subscribe,
+    subscribe: outerSubscribe,
     getState,
     replaceReducer,
+    [Symbol.observable]() {
+      return observable;
+    },
   };
 }
