@@ -1,3 +1,8 @@
+## 2.6.0
+
+- Add barebones Observable support ([#55](https://github.com/palantir/redoodle/pull/56))
+- Add type compatibility for Redux 4 for better out-of-the-box integration for libraries like React-redux ([#55])(https://github.com/palantir/redoodle/pull/56)
+
 ## 2.5.0
 
 - **NOTICE**: TypeScript >= 3.0 required to use Redoodle starting with 2.5.0 ([#33](https://github.com/palantir/redoodle/pull/33))
