@@ -9,12 +9,11 @@ function __unused(_value: any) {
   // noop
 }
 
-// @ts-ignore since this function is never used
-function test() {
+it("Redoodle Store should be compatible with Redux Store typing", () => {
   // we actually only need this to compile, so there's no real "test" here
   const reduxStore: redux.Store<State> = createStore<State>((s: State) => s, {
     foo: 5,
   });
 
   __unused(reduxStore);
-}
+});
