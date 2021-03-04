@@ -3,7 +3,7 @@
     "node_modules/tslint-eslint-rules/dist/rules"
   ],
   "rules": {
-    "class-name": true,
+    "class-name": false,
     "comment-format": [
       true,
       "check-space"

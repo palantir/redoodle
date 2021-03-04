@@ -28,7 +28,7 @@
     "gitbook-cli": "^2.3.0",
     "jest": "^19.0.2",
     "prettier": "^2.0.5",
-    "redux": "^4.0.0",
+    "redux": "^4.0.5",
     "ts-jest": "^19.0.13",
     "tslint": "^5.11.0",
     "tslint-eslint-rules": "^4.0.0",

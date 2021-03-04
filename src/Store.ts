@@ -17,11 +17,13 @@
 
 import { Dispatch } from "./Dispatch";
 import { Reducer } from "./Reducer";
+import { _ObservableLike } from "./_observableCompat";
 
 /**
  * Standard Redux Store type.
  */
 export interface Store<S> {
+  [Symbol.observable](): _ObservableLike<S>;
   dispatch: Dispatch;
   getState: () => S;
   subscribe: (listener: () => void) => () => void;
