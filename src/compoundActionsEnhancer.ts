@@ -31,11 +31,9 @@ export function compoundActionsEnhancer(): StoreEnhancer {
     return (reducer, initialState) => {
       const store = next(reduceCompoundActions(reducer), initialState);
       return {
-        dispatch: store.dispatch,
-        getState: store.getState,
+        ...store,
         replaceReducer: (newReducer) =>
           store.replaceReducer(reduceCompoundActions(newReducer)),
-        subscribe: store.subscribe,
       };
     };
   };
