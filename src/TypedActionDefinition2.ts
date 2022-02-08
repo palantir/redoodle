@@ -49,7 +49,7 @@ export type TypedActionDefinition2<E extends string, T> = {
    * to catch accidental misuse.
    */
   __PAYLOAD: T;
-} & (T extends undefined
+} & (T extends void
   ? {
       /**
        * When the action has no payload type, you can simply invoke the Definition with no args
