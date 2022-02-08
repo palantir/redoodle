@@ -123,7 +123,7 @@ export function createStore<S>(
     },
     [Symbol.observable]() {
       return observable;
-    }
+    },
   };
 
   return {

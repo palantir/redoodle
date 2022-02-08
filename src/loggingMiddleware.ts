@@ -93,56 +93,57 @@ export function loggingMiddleware(
 ): Middleware {
   const normalizedOptions = normalizeOptions(options);
 
-  return <S>(store: Middleware.Api<S>) => (next: Dispatch) => {
-    if (
-      typeof process !== "undefined" &&
-      process.env.NODE_ENV === "production"
-    ) {
-      if (!options?.enableInProduction) {
-        if (!PRODUCTION_OFF_WARNING_LOGGED) {
-          console.log(
-            "Redoodle logging turned off when running in production.",
+  return <S>(store: Middleware.Api<S>) =>
+    (next: Dispatch) => {
+      if (
+        typeof process !== "undefined" &&
+        process.env.NODE_ENV === "production"
+      ) {
+        if (!options?.enableInProduction) {
+          if (!PRODUCTION_OFF_WARNING_LOGGED) {
+            console.log(
+              "Redoodle logging turned off when running in production.",
+            );
+            PRODUCTION_OFF_WARNING_LOGGED = true;
+          }
+
+          return next;
+        }
+
+        if (!PRODUCTION_ON_WARNING_LOGGED) {
+          console.warn(
+            "Redoodle logging is currently ON in this production environment. " +
+              "The Redoodle logging may cause memory leaks that " +
+              " lead to application crashes after long periods of usage. " +
+              "It is highly recommended to initialize loggingMiddleware with {enableInProduction: false}.",
           );
-          PRODUCTION_OFF_WARNING_LOGGED = true;
-        }
 
-        return next;
-      }
-
-      if (!PRODUCTION_ON_WARNING_LOGGED) {
-        console.warn(
-          "Redoodle logging is currently ON in this production environment. " +
-            "The Redoodle logging may cause memory leaks that " +
-            " lead to application crashes after long periods of usage. " +
-            "It is highly recommended to initialize loggingMiddleware with {enableInProduction: false}.",
-        );
-
-        PRODUCTION_ON_WARNING_LOGGED = true;
-      }
-    }
-
-    return (action: any) => {
-      if (normalizedOptions.ignore(action)) {
-        return next(action);
-      }
-
-      const previousState = store.getState();
-      const result = next(action);
-      const nextState = store.getState();
-
-      for (let i = 0; i < normalizedOptions.handlers.length; i++) {
-        const handler = normalizedOptions.handlers[i];
-        if (handler.accept(action)) {
-          handler.log({ action, previousState, nextState });
-          break;
+          PRODUCTION_ON_WARNING_LOGGED = true;
         }
       }
 
-      if (normalizedOptions.includeStackTraces(action)) {
-        console.trace("%cStack Trace", "color: #bfccd6; font-size: 10px;");
-      }
+      return (action: any) => {
+        if (normalizedOptions.ignore(action)) {
+          return next(action);
+        }
 
-      return result;
+        const previousState = store.getState();
+        const result = next(action);
+        const nextState = store.getState();
+
+        for (let i = 0; i < normalizedOptions.handlers.length; i++) {
+          const handler = normalizedOptions.handlers[i];
+          if (handler.accept(action)) {
+            handler.log({ action, previousState, nextState });
+            break;
+          }
+        }
+
+        if (normalizedOptions.includeStackTraces(action)) {
+          console.trace("%cStack Trace", "color: #bfccd6; font-size: 10px;");
+        }
+
+        return result;
+      };
     };
-  };
 }

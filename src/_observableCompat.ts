@@ -1,12 +1,11 @@
-
 /**
  * Minimal interface to support Observer integration for Redoodle.
  * Redoodle is not designed as an Observable engine itself. Integration is included only
  * for compatibility with core Redux, which recently added its own Observer support.
  */
 export type _ObserverLike<T> = {
-  next?(value: T): void
-}
+  next?(value: T): void;
+};
 
 /**
  * Minimal interface to support Observable integration for Redoodle.
@@ -22,6 +21,6 @@ export interface _ObservableLike<T> {
    * be used to unsubscribe the observable from the store, and prevent further
    * emission of values from the observable.
    */
-  subscribe: (observer: _ObserverLike<T>) => { unsubscribe: () => void }
+  subscribe: (observer: _ObserverLike<T>) => { unsubscribe: () => void };
   [Symbol.observable](): _ObservableLike<T>;
 }
