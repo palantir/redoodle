@@ -68,12 +68,9 @@ describe("TypedReducer", () => {
 
   it("should only invoke handlers for existing actions", () => {
     const reducer = TypedReducer.builder<CountState>()
-      .withActionHandler(
-        Count.TYPE,
-        (_state, _action): CountState => {
-          throw new Error("handle COUNT should not have been called");
-        },
-      )
+      .withActionHandler(Count.TYPE, (_state, _action): CountState => {
+        throw new Error("handle COUNT should not have been called");
+      })
       .build();
 
     expect(reducer({ total: 5 }, Reset.create(3))).toEqual({ total: 5 });

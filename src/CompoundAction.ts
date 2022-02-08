@@ -25,6 +25,5 @@ import { TypedAction } from "./TypedAction";
  * @see TypedAction
  * @see reduceCompoundActions
  */
-export const CompoundAction = TypedAction.define("redoodle::compound")<
-  Action[]
->();
+export const CompoundAction =
+  TypedAction.define("redoodle::compound")<Action[]>();

@@ -225,9 +225,8 @@ export namespace TypedAction {
     is(action: Action): action is TypedAction<T, E>;
   }
 
-  export type PayloadOf<
-    D extends Definition<any, any>
-  > = D["TYPE"]["__type__"]["withPayload"];
+  export type PayloadOf<D extends Definition<any, any>> =
+    D["TYPE"]["__type__"]["withPayload"];
 
   /**
    * A TypedAction.NoPayloadDefinition manages all Redux actions of a specific type string,
