@@ -21,18 +21,18 @@
     "docs:publish": "yarn docs:clean && yarn docs:build && cd _book && git init && git commit --allow-empty -m 'update book' && git checkout -b gh-pages && touch .nojekyll && git add . && git commit -am 'update book' && git push git@github.com:palantir/redoodle gh-pages --force"
   },
   "dependencies": {
-    "tslib": "^1.8.1"
+    "tslib": "^2.3.1"
   },
   "devDependencies": {
-    "@types/jest": "^19.2.2",
+    "@types/jest": "^27.4.0",
     "gitbook-cli": "^2.3.0",
-    "jest": "^19.0.2",
+    "jest": "^27.5.1",
     "prettier": "^2.0.5",
     "redux": "^4.0.5",
-    "ts-jest": "^19.0.13",
+    "ts-jest": "^27.1.3",
     "tslint": "^5.11.0",
     "tslint-eslint-rules": "^4.0.0",
-    "typescript": "^3.8.3"
+    "typescript": "^4.5.5"
   },
   "jest": {
     "transform": {
