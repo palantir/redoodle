@@ -34,17 +34,6 @@
     "tslint-eslint-rules": "^4.0.0",
     "typescript": "^4.5.5"
   },
-  "jest": {
-    "transform": {
-      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
-    },
-    "testResultsProcessor": "<rootDir>/node_modules/ts-jest/coverageprocessor.js",
-    "testRegex": "/__tests__/.*\\.spec\\.ts$",
-    "moduleFileExtensions": [
-      "js",
-      "ts"
-    ]
-  },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/palantir/redoodle.git"
