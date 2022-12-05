@@ -225,6 +225,9 @@ export namespace TypedAction {
     is(action: Action): action is TypedAction<T, E>;
   }
 
+  /**
+   * @deprecated use top level PayloadOf
+   */
   export type PayloadOf<
     D extends Definition<any, any>
   > = D["TYPE"]["__type__"]["withPayload"];
