@@ -41,8 +41,7 @@ export type TypedActionDefinition2<E extends string, T> = {
 
   /**
    * Hidden field used for some workflows that need to extract the payload type back out of
-   * a TypedAction definition. For example, `const payload: typeof MyAction.__PAYLOAD = { ... };`
-   * can be used to define a payload conforming to MyAction.
+   * a TypedAction definition. Use `PayloadOf<typeof MyAction>` to extract the type.
    *
    * This value should only be used for constructing Types in TypeScript. It never holds a real value.
    * Future versions of Redoodle may throw when attempting accessing this value at runtime
