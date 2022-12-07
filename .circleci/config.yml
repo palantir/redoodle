@@ -76,16 +76,28 @@ workflows:
   version: 2
   check:
     jobs:
-      - build
+      - build:
+          filters:
+            tags:
+              only: /.*/
       - test:
           requires:
             - build
+          filters:
+            tags:
+              only: /.*/
       - lint:
           requires:
             - build
+          filters:
+            tags:
+              only: /.*/
       - prettier:
           requires:
             - build
+          filters:
+            tags:
+              only: /.*/
       - publish:
           requires:
             - build
