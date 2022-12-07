@@ -1,3 +1,7 @@
+## 2.7.0
+
+- add general PayloadOf type
+
 ## 2.6.0
 
 - Add barebones Observable support ([#55](https://github.com/palantir/redoodle/pull/56))
