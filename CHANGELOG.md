@@ -1,3 +1,6 @@
+## 2.7.0
+
+- Add PayloadOf type to get payload from definitions
 ## 2.6.0
 
 - Add barebones Observable support ([#55](https://github.com/palantir/redoodle/pull/56))
