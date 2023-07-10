@@ -69,7 +69,7 @@ jobs:
       - run:
           name: publish
           command: |
-            if [[ "${CIRCLE_TAG}" =~ [0-9]+(\.[0-9]+)+(-[a-zA-Z]+[0-9]*)* ]]; then
+            if [[ "${CIRCLE_TAG}" =~ v[0-9]+(\.[0-9]+)+(-[a-zA-Z]+[0-9]*)* ]]; then
               # this will only run if we're in a tag build
               ./scripts/publish.sh
             fi
@@ -110,4 +110,4 @@ workflows:
             branches:
               ignore: /.*/
             tags:
-              only: /[0-9]+(\.[0-9]+){2}(-rc[0-9]+)?/
+              only: /v[0-9]+(\.[0-9]+){2}(-rc[0-9]+)?/
