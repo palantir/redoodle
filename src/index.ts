@@ -38,4 +38,4 @@ export { loggingMiddleware } from "./loggingMiddleware";
 export { omit } from "./omit";
 export { reduceCompoundActions } from "./reduceCompoundActions";
 export { setWith } from "./setWith";
-export type {PayloadOf} from "./PayloadOf";
+export type { PayloadOf } from "./PayloadOf";
