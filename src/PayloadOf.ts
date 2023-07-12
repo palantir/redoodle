@@ -1,4 +1,3 @@
-
 import { TypedAction } from "./TypedAction";
 import { TypedActionDefinition2 } from "./TypedActionDefinition2";
 

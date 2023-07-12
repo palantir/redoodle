@@ -57,7 +57,7 @@ jobs:
           at: ./
       - run:
           name: prettier
-          command: ./node_modules/.bin/prettier --check src/**/*
+          command: ./node_modules/.bin/prettier --check "src/**/*"
 
   publish:
     docker:
