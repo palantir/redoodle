@@ -18,7 +18,8 @@
     "docs:prepare": "gitbook install",
     "docs:build": "yarn docs:prepare && gitbook build -g palantir/redoodle",
     "docs:watch": "yarn docs:prepare && gitbook serve -g palantir/redoodle",
-    "docs:publish": "yarn docs:clean && yarn docs:build && cd _book && git init && git commit --allow-empty -m 'update book' && git checkout -b gh-pages && touch .nojekyll && git add . && git commit -am 'update book' && git push git@github.com:palantir/redoodle gh-pages --force"
+    "docs:publish": "yarn docs:clean && yarn docs:build && cd _book && git init && git commit --allow-empty -m 'update book' && git checkout -b gh-pages && touch .nojekyll && git add . && git commit -am 'update book' && git push git@github.com:palantir/redoodle gh-pages --force",
+    "prettier:write": "prettier --write \"src/**/*\""
   },
   "dependencies": {
     "tslib": "^1.8.1"
