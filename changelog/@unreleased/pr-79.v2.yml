@@ -1,0 +1,7 @@
+type: fix
+fix:
+  description: Fix symbol-observable typing issue that caused Typescript compilation
+    to fail for consumers that don't depend on `redux`
+  links:
+  - https://github.com/palantir/redoodle/pull/79
+  - https://github.com/palantir/redoodle/issues/63
